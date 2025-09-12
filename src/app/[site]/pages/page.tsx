@@ -1,4 +1,5 @@
 import { getAllPages } from "@/lib/wordpress";
+import type { Page } from "@/lib/wordpress.d";
 import { Section, Container, Prose } from "@/components/craft";
 import { generateArchiveMetadata } from "@/lib/metadata";
 import BackButton from "@/components/back";
@@ -20,7 +21,13 @@ export async function generateMetadata({
 }
 
 export default async function Page() {
-  const pages = await getAllPages();
+  let pages: Page[] = [];
+
+  try {
+    pages = await getAllPages();
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <Section>
