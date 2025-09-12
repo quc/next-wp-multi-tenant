@@ -1,4 +1,5 @@
 import { getPageBySlugWithYoast, getAllPages } from "@/lib/wordpress";
+import type { Page } from "@/lib/wordpress.d";
 import { Section, Container, Prose } from "@/components/craft";
 import { generatePostMetadata } from "@/lib/metadata";
 
@@ -8,7 +9,13 @@ import type { Metadata } from "next";
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const pages = await getAllPages();
+  let pages: Page[] = [];
+
+  try {
+    pages = await getAllPages();
+  } catch (error) {
+    console.error(error);
+  }
 
   return pages.map((page) => ({
     slug: page.slug,

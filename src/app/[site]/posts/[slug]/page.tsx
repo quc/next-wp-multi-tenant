@@ -8,7 +8,13 @@ import type { Metadata } from "next";
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs();
+  let slugs: { slug: string }[] = [];
+  try {
+    slugs = await getAllPostSlugs();
+  } catch (error) {
+    console.error(error);
+  }
+
   return slugs;
 }
 
@@ -18,7 +24,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string; site: string }>;
 }): Promise<Metadata> {
   const { slug, site } = await params;
-  const post = await getPostBySlugWithYoast(slug, site);
+  let post;
+
+  try {
+    post = await getPostBySlugWithYoast(slug, site);
+  } catch (error) {
+    console.error(error);
+  }
 
   if (!post) {
     return {};
@@ -41,7 +53,13 @@ export default async function Page({
   params: Promise<{ slug: string; site: string }> 
 }) {
   const { slug, site } = await params;
-  const post = await getPostBySlugWithYoast(slug, site);
+  let post;
+
+  try {
+    post = await getPostBySlugWithYoast(slug, site);
+  } catch (error) {
+    console.error(error);
+  }
 
   if (!post) {
     return (
