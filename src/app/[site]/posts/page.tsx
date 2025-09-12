@@ -21,13 +21,23 @@ import { Section, Container, Prose } from "@/components/craft";
 import { PostCard } from "@/components/posts/post-card";
 import { FilterPosts } from "@/components/posts/filter";
 import { SearchInput } from "@/components/posts/search-input";
+import { generateArchiveMetadata } from "@/lib/metadata";
 
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Blog Posts",
-  description: "Browse all our blog posts",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ site: string }>;
+}): Promise<Metadata> {
+  const { site } = await params;
+  return generateArchiveMetadata(
+    "Blog Posts",
+    "Browse all our blog posts and articles",
+    "/posts",
+    site
+  );
+}
 
 export const dynamic = "auto";
 export const revalidate = 600;

@@ -1,6 +1,7 @@
 // Description: WordPress API functions
 // Used to fetch data from a WordPress site using the WordPress REST API
 // Types are imported from `wp.d.ts`
+// Supports both single-site and multisite configurations
 
 import querystring from "query-string";
 import type {
@@ -12,10 +13,33 @@ import type {
   FeaturedMedia,
 } from "./wordpress.d";
 
-const baseUrl = process.env.WORDPRESS_URL;
+// Import HeadstartWP configuration for multisite support
+import headstartwpConfig from "../../headstartwp.config.js";
 
-if (!baseUrl) {
-  throw new Error("WORDPRESS_URL environment variable is not defined");
+// Site configuration type
+interface SiteConfig {
+  slug: string;
+  sourceUrl: string;
+  hostUrl: string;
+  locale?: string;
+}
+
+// Get WordPress base URL for a specific site
+function getWordPressBaseUrl(siteSlug?: string): string {
+  // If siteSlug is provided, use multisite configuration
+  if (siteSlug && headstartwpConfig.sites) {
+    const site = headstartwpConfig.sites.find((s: any) => s.slug === siteSlug);
+    if (site?.sourceUrl) {
+      return site.sourceUrl;
+    }
+  }
+    
+  // Final fallback to HeadstartWP default
+  if (process.env.NEXT_PUBLIC_HEADLESS_WP_URL) {
+    return process.env.NEXT_PUBLIC_HEADLESS_WP_URL;
+  }
+  
+  throw new Error("No WordPress URL configured. Set NEXT_PUBLIC_HEADLESS_WP_URL or configure sites in headstartwp.config.js");
 }
 
 class WordPressAPIError extends Error {
@@ -36,29 +60,34 @@ export interface WordPressResponse<T> {
   headers: WordPressPaginationHeaders;
 }
 
-// Keep original function for backward compatibility
+// Core fetch function with multisite support
 async function wordpressFetch<T>(
   path: string,
-  query?: Record<string, any>
+  query?: Record<string, any>,
+  siteSlug?: string
 ): Promise<T> {
+  const baseUrl = getWordPressBaseUrl(siteSlug);
   const url = `${baseUrl}${path}${
     query ? `?${querystring.stringify(query)}` : ""
   }`;
   const userAgent = "Next.js WordPress Client";
+
+  // Create cache tags based on site
+  const cacheTags = siteSlug ? [`wordpress-${siteSlug}`, "wordpress"] : ["wordpress"];
 
   const response = await fetch(url, {
     headers: {
       "User-Agent": userAgent,
     },
     next: {
-      tags: ["wordpress"],
+      tags: cacheTags,
       revalidate: 3600, // 1 hour cache
     },
   });
 
   if (!response.ok) {
     throw new WordPressAPIError(
-      `WordPress API request failed: ${response.statusText}`,
+      `WordPress API request failed: ${url} ${response.statusText}`,
       response.status,
       url
     );
@@ -67,22 +96,27 @@ async function wordpressFetch<T>(
   return response.json();
 }
 
-// New function for paginated requests
+// Function for paginated requests with multisite support
 async function wordpressFetchWithPagination<T>(
   path: string,
-  query?: Record<string, any>
+  query?: Record<string, any>,
+  siteSlug?: string
 ): Promise<WordPressResponse<T>> {
+  const baseUrl = getWordPressBaseUrl(siteSlug);
   const url = `${baseUrl}${path}${
     query ? `?${querystring.stringify(query)}` : ""
   }`;
   const userAgent = "Next.js WordPress Client";
+
+  // Create cache tags based on site
+  const cacheTags = siteSlug ? [`wordpress-${siteSlug}`, "wordpress"] : ["wordpress"];
 
   const response = await fetch(url, {
     headers: {
       "User-Agent": userAgent,
     },
     next: {
-      tags: ["wordpress"],
+      tags: cacheTags,
       revalidate: 3600, // 1 hour cache
     },
   });
@@ -106,7 +140,7 @@ async function wordpressFetchWithPagination<T>(
   };
 }
 
-// New function for paginated posts
+// Function for paginated posts with multisite support
 export async function getPostsPaginated(
   page: number = 1,
   perPage: number = 9,
@@ -115,7 +149,8 @@ export async function getPostsPaginated(
     tag?: string;
     category?: string;
     search?: string;
-  }
+  },
+  siteSlug?: string
 ): Promise<WordPressResponse<Post[]>> {
   const query: Record<string, any> = {
     _embed: true,
@@ -123,8 +158,8 @@ export async function getPostsPaginated(
     page,
   };
 
-  // Build cache tags based on filters
-  const cacheTags = ["wordpress", "posts"];
+  // Build cache tags based on filters and site
+  const cacheTags = siteSlug ? [`wordpress-${siteSlug}`, "wordpress", "posts"] : ["wordpress", "posts"];
 
   if (filterParams?.search) {
     query.search = filterParams.search;
@@ -146,6 +181,7 @@ export async function getPostsPaginated(
   // Add page-specific cache tag for granular invalidation
   cacheTags.push(`posts-page-${page}`);
 
+  const baseUrl = getWordPressBaseUrl(siteSlug);
   const url = `${baseUrl}/wp-json/wp/v2/posts${
     query ? `?${querystring.stringify(query)}` : ""
   }`;
@@ -180,12 +216,15 @@ export async function getPostsPaginated(
   };
 }
 
-export async function getAllPosts(filterParams?: {
-  author?: string;
-  tag?: string;
-  category?: string;
-  search?: string;
-}): Promise<Post[]> {
+export async function getAllPosts(
+  filterParams?: {
+    author?: string;
+    tag?: string;
+    category?: string;
+    search?: string;
+  },
+  siteSlug?: string
+): Promise<Post[]> {
   const query: Record<string, any> = {
     _embed: true,
     per_page: 100,
@@ -215,15 +254,15 @@ export async function getAllPosts(filterParams?: {
     }
   }
 
-  return wordpressFetch<Post[]>("/wp-json/wp/v2/posts", query);
+  return wordpressFetch<Post[]>("/wp-json/wp/v2/posts", query, siteSlug);
 }
 
-export async function getPostById(id: number): Promise<Post> {
-  return wordpressFetch<Post>(`/wp-json/wp/v2/posts/${id}`);
+export async function getPostById(id: number, siteSlug?: string): Promise<Post> {
+  return wordpressFetch<Post>(`/wp-json/wp/v2/posts/${id}`, undefined, siteSlug);
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-  return wordpressFetch<Post[]>("/wp-json/wp/v2/posts", { slug }).then(
+export async function getPostBySlug(slug: string, siteSlug?: string): Promise<Post> {
+  return wordpressFetch<Post[]>("/wp-json/wp/v2/posts", { slug }, siteSlug).then(
     (posts) => posts[0]
   );
 }
@@ -420,4 +459,204 @@ export async function getPostsByAuthorPaginated(
   return wordpressFetchWithPagination<Post[]>("/wp-json/wp/v2/posts", query);
 }
 
-export { WordPressAPIError };
+// ============================================================================
+// SITE METADATA FUNCTIONS
+// ============================================================================
+
+// WordPress site information interface
+export interface WordPressSiteInfo {
+  name: string;
+  description: string;
+  url: string;
+  home: string;
+  gmt_offset: string;
+  timezone_string: string;
+  namespaces: string[];
+  authentication: {
+    oauth1: boolean;
+    application_passwords: boolean;
+  };
+  routes: Record<string, any>;
+  _links: Record<string, any>;
+}
+
+// Fetch WordPress site information
+export async function getWordPressSiteInfo(siteSlug?: string): Promise<WordPressSiteInfo> {
+  return wordpressFetch<WordPressSiteInfo>("/wp-json/", undefined, siteSlug);
+}
+
+// Generate site metadata from WordPress
+export async function generateSiteMetadata(siteSlug?: string): Promise<{
+  title: string;
+  description: string;
+  url: string;
+  siteName: string;
+}> {
+  try {
+    const siteInfo = await getWordPressSiteInfo(siteSlug);
+
+    return {
+      title: siteInfo.name,
+      description: siteInfo.description,
+      url: siteInfo.url || siteInfo.home,
+      siteName: siteInfo.name
+    };
+  } catch (error) {
+    console.error('Error fetching WordPress site metadata:', error);
+    return {
+      title: '',
+      description: '',
+      url: '',
+      siteName: ''
+    };
+  }
+}
+
+// ============================================================================
+// YOAST SEO FUNCTIONS
+// ============================================================================
+
+import type { YoastSEO, PostWithYoast } from "./wordpress.d";
+
+// Fetch post with Yoast SEO data
+export async function getPostBySlugWithYoast(slug: string, siteSlug?: string): Promise<PostWithYoast> {
+  const posts = await wordpressFetch<PostWithYoast[]>("/wp-json/wp/v2/posts", { 
+    slug,
+    _embed: true,
+    yoast_head: true,
+    yoast_head_json: true
+  }, siteSlug);
+  return posts[0];
+}
+
+// Fetch page with Yoast SEO data
+export async function getPageBySlugWithYoast(slug: string, siteSlug?: string): Promise<PostWithYoast> {
+  const pages = await wordpressFetch<PostWithYoast[]>("/wp-json/wp/v2/pages", { 
+    slug,
+    _embed: true,
+    yoast_head: true,
+    yoast_head_json: true
+  }, siteSlug);
+  return pages[0];
+}
+
+// Generate metadata from Yoast SEO data
+export function generateYoastMetadata(yoastData: YoastSEO, fallbackTitle: string, fallbackDescription: string): {
+  title?: string;
+  description?: string;
+  robots?: {
+    index?: boolean;
+    follow?: boolean;
+    noarchive?: boolean;
+    nosnippet?: boolean;
+    noimageindex?: boolean;
+  };
+  alternates?: {
+    canonical?: string;
+  };
+  openGraph?: {
+    title?: string;
+    description?: string;
+    images?: Array<{
+      url: string;
+      width?: number;
+      height?: number;
+      alt?: string;
+    }>;
+  };
+  twitter?: {
+    title?: string;
+    description?: string;
+    images?: string[];
+  };
+} {
+  const metadata: any = {};
+
+  // Title
+  if (yoastData.title) {
+    metadata.title = yoastData.title;
+  }
+
+  // Description
+  if (yoastData.metaDesc) {
+    metadata.description = yoastData.metaDesc;
+  }
+
+  // Robots
+  if (yoastData.metaRobotsNoindex || yoastData.metaRobotsNofollow) {
+    metadata.robots = {
+      index: yoastData.metaRobotsNoindex !== "noindex",
+      follow: yoastData.metaRobotsNofollow !== "nofollow",
+    };
+  }
+
+  // Canonical URL
+  if (yoastData.canonical) {
+    metadata.alternates = {
+      canonical: yoastData.canonical,
+    };
+  }
+
+  // Open Graph
+  if (yoastData.ogTitle || yoastData.ogDescription || yoastData.ogImage) {
+    metadata.openGraph = {};
+    
+    if (yoastData.ogTitle) {
+      metadata.openGraph.title = yoastData.ogTitle;
+    }
+    
+    if (yoastData.ogDescription) {
+      metadata.openGraph.description = yoastData.ogDescription;
+    }
+    
+    if (yoastData.ogImage) {
+      metadata.openGraph.images = [{
+        url: yoastData.ogImage.url,
+        width: yoastData.ogImage.width,
+        height: yoastData.ogImage.height,
+        alt: yoastData.ogTitle || fallbackTitle,
+      }];
+    }
+  }
+
+  // Twitter
+  if (yoastData.twitterTitle || yoastData.twitterDescription || yoastData.twitterImage) {
+    metadata.twitter = {};
+    
+    if (yoastData.twitterTitle) {
+      metadata.twitter.title = yoastData.twitterTitle;
+    }
+    
+    if (yoastData.twitterDescription) {
+      metadata.twitter.description = yoastData.twitterDescription;
+    }
+    
+    if (yoastData.twitterImage) {
+      metadata.twitter.images = [yoastData.twitterImage.url];
+    }
+  }
+
+  return metadata;
+}
+
+// ============================================================================
+// MULTISITE SUPPORT
+// ============================================================================
+// 
+// This file now supports both single-site and multisite configurations.
+// 
+// For multisite usage, pass the siteSlug parameter to any function:
+// 
+// Example usage:
+// const posts = await getPostsPaginated(1, 9, undefined, 'tubemagnet');
+// const post = await getPostBySlug('my-post', 'js1');
+// const categories = await getAllCategories('tubemagnet');
+//
+// Environment variables needed for multisite:
+// - NEXT_PUBLIC_HEADLESS_WP_URL_TUBEMAGNET (for tubemagnet site)
+// - NEXT_PUBLIC_HEADLESS_WP_URL_JS1 (for js1 site)
+// - NEXT_PUBLIC_HEADLESS_WP_URL (fallback)
+//
+// The functions will automatically resolve the correct WordPress URL based on:
+// 1. The siteSlug parameter (if provided)
+// 2. NEXT_PUBLIC_HEADLESS_WP_URL (final fallback)

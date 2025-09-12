@@ -1,16 +1,23 @@
 import { getAllPages } from "@/lib/wordpress";
 import { Section, Container, Prose } from "@/components/craft";
-import { Metadata } from "next";
+import { generateArchiveMetadata } from "@/lib/metadata";
 import BackButton from "@/components/back";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "All Pages",
-  description: "Browse all pages of our blog posts",
-  alternates: {
-    canonical: "/posts/pages",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ site: string }>;
+}): Promise<Metadata> {
+  const { site } = await params;
+  return generateArchiveMetadata(
+    "All Pages",
+    "Browse all pages of our website",
+    "/pages",
+    site
+  );
+}
 
 export default async function Page() {
   const pages = await getAllPages();

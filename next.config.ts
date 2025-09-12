@@ -1,25 +1,15 @@
-import type { NextConfig } from "next";
+const { withHeadstartWPConfig } = require('@headstartwp/next/config');
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: `${process.env.WORDPRESS_HOSTNAME}`,
-        port: "",
-        pathname: "/**",
-      },
-    ],
-  },
-  async redirects() {
-    return [
-      {
-        source: "/admin",
-        destination: `${process.env.WORDPRESS_URL}/wp-admin`,
-        permanent: true,
-      },
-    ];
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+	webpack: (config: any) => {
+		config.resolve = {
+			...config.resolve,
+			conditionNames: ['import'],
+		};
+
+		return config;
+	},
 };
 
-export default nextConfig;
+module.exports = withHeadstartWPConfig(nextConfig);

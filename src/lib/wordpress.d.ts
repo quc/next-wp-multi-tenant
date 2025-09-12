@@ -78,6 +78,42 @@ export interface Post extends WPEntity {
   meta: Record<string, unknown>;
 }
 
+// Yoast SEO metadata interface
+export interface YoastSEO {
+  title?: string;
+  metaDesc?: string;
+  focuskw?: string;
+  metaKeywords?: string;
+  metaRobotsNoindex?: string;
+  metaRobotsNofollow?: string;
+  metaRobotsAdv?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  schema?: {
+    "@context": string;
+    "@graph": any[];
+  };
+}
+
+// Enhanced Post interface with Yoast SEO
+export interface PostWithYoast extends Post {
+  yoast_head?: string;
+  yoast_head_json?: YoastSEO;
+}
+
 export interface Page extends WPEntity {
   title: RenderedTitle;
   content: RenderedContent;
