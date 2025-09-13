@@ -2,6 +2,7 @@ const { withHeadstartWPConfig } = require('@headstartwp/next/config');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	htmlLimitedBots: new RegExp('/.+/'),
 	webpack: (config: any) => {
 		config.resolve = {
 			...config.resolve,
