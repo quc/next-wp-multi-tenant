@@ -1,8 +1,9 @@
 const { withHeadstartWPConfig } = require('@headstartwp/next/config');
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
 	htmlLimitedBots: new RegExp('/.+/'),
+	serverExternalPackages: ["@sparticuz/chromium", "puppeteer-core"],
 	webpack: (config: any) => {
 		config.resolve = {
 			...config.resolve,
