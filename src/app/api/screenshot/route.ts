@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const urlParam = searchParams.get("url");
   const viewportParam = searchParams.get("viewport") || "desktop";
+  const selectorParam = searchParams.get("selector");
   
   if (!urlParam) {
     return new NextResponse("Please provide a URL.", { status: 400 });
@@ -91,13 +92,30 @@ export async function GET(request: NextRequest) {
     
     await page.goto(parsedUrl.toString(), { waitUntil: "networkidle2" });
     
-    // Take full page screenshot
-    const screenshot = await page.screenshot({ 
-      type: "png",
-      fullPage: true
-    });
+    let screenshot;
     
-    const filename = `screenshot-${viewportParam}.png`;
+    if (selectorParam && selectorParam.trim()) {
+      // Wait for the element to be visible
+      try {
+        await page.waitForSelector(selectorParam.trim(), { timeout: 10000 });
+        const element = await page.$(selectorParam.trim());
+        if (element) {
+          screenshot = await element.screenshot({ type: "png" });
+        } else {
+          return new NextResponse("Element not found with the provided selector.", { status: 404 });
+        }
+      } catch (error) {
+        return new NextResponse(`Element not found or selector invalid: ${selectorParam}`, { status: 404 });
+      }
+    } else {
+      // Take full page screenshot
+      screenshot = await page.screenshot({ 
+        type: "png",
+        fullPage: true
+      });
+    }
+    
+    const filename = `screenshot-${viewportParam}${selectorParam ? `-${selectorParam.replace(/[^a-zA-Z0-9]/g, '_')}` : ''}.png`;
     return new NextResponse(screenshot, {
       headers: {
         "Content-Type": "image/png",

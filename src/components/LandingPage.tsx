@@ -78,6 +78,8 @@ export default function LandingPage({ theme }: LandingPageProps) {
   const { cssVars, brand } = currentTheme;
 
   const [url, setUrl] = useState("");
+  const [selector, setSelector] = useState("");
+  const [viewport, setViewport] = useState<"desktop" | "mobile">("desktop");
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -103,8 +105,17 @@ export default function LandingPage({ theme }: LandingPageProps) {
     setScreenshot(null);
 
     try {
+      const params = new URLSearchParams({
+        url: url.trim(),
+        viewport: viewport
+      });
+      
+      if (selector.trim()) {
+        params.append('selector', selector.trim());
+      }
+      
       const response = await fetch(
-        `/api/screenshot?url=${encodeURIComponent(url)}`
+        `/api/screenshot?${params.toString()}`
       );
       if (!response.ok) {
         throw new Error("Failed to capture screenshot.");
@@ -272,21 +283,43 @@ export default function LandingPage({ theme }: LandingPageProps) {
         <p className="text-lg text-gray-600 mb-8">
           Enter a URL below to generate a screenshot
         </p>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://vercel.com"
-            className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:outline-none"
-          />
-          <button
-            onClick={handleScreenshot}
-            disabled={loading}
-            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
-          >
-            {loading ? "Capturing..." : "Capture"}
-          </button>
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="https://vercel.com"
+              className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:outline-none"
+            />
+            <select
+              value={viewport}
+              onChange={(e) => setViewport(e.target.value as "desktop" | "mobile")}
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:outline-none bg-white"
+            >
+              <option value="desktop">Desktop</option>
+              <option value="mobile">Mobile</option>
+            </select>
+            <button
+              onClick={handleScreenshot}
+              disabled={loading}
+              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+            >
+              {loading ? "Capturing..." : "Capture"}
+            </button>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={selector}
+              onChange={(e) => setSelector(e.target.value)}
+              placeholder="CSS Selector (optional) - e.g., h1, main, #page-content"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:outline-none"
+            />
+            <p className="text-sm text-gray-500 mt-1">
+              Leave empty to capture the full page, or specify a CSS selector (h1, main, header)
+            </p>
+          </div>
         </div>
         {error && <p className="text-red-500 mt-4">{error}</p>}
         {screenshot && (
