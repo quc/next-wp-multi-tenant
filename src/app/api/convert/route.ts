@@ -99,11 +99,11 @@ export async function GET(request: NextRequest) {
     // Inject and execute the text-to-image conversion script
     await page.evaluate(() => {
       function replaceAllTextWithWordImages() {
-        function processNode(el) {
-          el.childNodes.forEach(child => {
+        function processNode(el: Element) {
+          el.childNodes.forEach((child: ChildNode) => {
             if (child.nodeType === Node.TEXT_NODE) {
               const text = child.textContent;
-              if (!text.trim()) return; // skip empty/whitespace
+              if (!text?.trim()) return; // skip empty/whitespace
 
               const parentStyle = window.getComputedStyle(el);
               const font = `${parentStyle.fontStyle} ${parentStyle.fontVariant} ${parentStyle.fontWeight} ${parentStyle.fontSize} ${parentStyle.fontFamily}`;
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
 
               const frag = document.createDocumentFragment();
 
-              parts.forEach(part => {
+              parts.forEach((part: string) => {
                 if (part.trim() === "") {
                   // Spaces → keep them as text
                   frag.appendChild(document.createTextNode(part));
@@ -122,6 +122,8 @@ export async function GET(request: NextRequest) {
                   // Word → render into canvas first
                   const canvas = document.createElement("canvas");
                   const ctx = canvas.getContext("2d");
+
+                  if (!ctx) return; // Skip if context is null
 
                   ctx.font = font;
                   const metrics = ctx.measureText(part);
@@ -151,8 +153,8 @@ export async function GET(request: NextRequest) {
 
             } else if (child.nodeType === Node.ELEMENT_NODE) {
               // Skip script/style tags
-              if (child.tagName !== "SCRIPT" && child.tagName !== "STYLE") {
-                processNode(child);
+              if ((child as Element).tagName !== "SCRIPT" && (child as Element).tagName !== "STYLE") {
+                processNode(child as Element);
               }
             }
           });
