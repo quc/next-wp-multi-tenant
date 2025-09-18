@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "redis"
 
-export const maxDuration = 60;
+const redis =  await createClient({ url: process.env.REDIS_URL }).connect();
 
 export async function GET(request: NextRequest) {
   const puppeteerCore = await import("puppeteer-core");
@@ -11,7 +12,12 @@ export async function GET(request: NextRequest) {
   
   const { searchParams } = new URL(request.url);
   const urlParam = searchParams.get("url");
+  const cacheReset = searchParams.get("cacheReset") === "true";
   const viewportParam = searchParams.get("viewport") || "desktop";
+  
+  // Log the original and decoded URL for debugging
+  console.log("Original URL param:", searchParams.toString());
+  console.log("Decoded URL param:", urlParam);
   
   if (!urlParam) {
     return new NextResponse("Please provide a URL.", { status: 400 });
@@ -23,8 +29,17 @@ export async function GET(request: NextRequest) {
     return new NextResponse("Viewport must be 'desktop' or 'mobile'.", { status: 400 });
   }
 
-  // Prepend http:// if missing
+  // Prepend http:// if missing and handle any additional encoding issues
   let inputUrl = urlParam.trim();
+  
+  // Additional decode in case of double encoding
+  try {
+    inputUrl = decodeURIComponent(inputUrl);
+  } catch (e) {
+    // If decode fails, use the original URL
+    console.log("Failed to decode URL, using original:", inputUrl);
+  }
+  
   if (!/^https?:\/\//i.test(inputUrl)) {
     inputUrl = `http://${inputUrl}`;
   }
@@ -40,6 +55,25 @@ export async function GET(request: NextRequest) {
     }
   } catch {
     return new NextResponse("Invalid URL provided.", { status: 400 });
+  }
+
+  parsedUrl.searchParams.set("skipRender", "true");
+
+  const storageKey = parsedUrl.hostname + parsedUrl.pathname;
+
+  if (cacheReset) {
+    await redis.del(storageKey);
+  } else {
+    const cachedHtml = await redis.get(storageKey);
+  
+    if (cachedHtml) {
+      return new NextResponse(cachedHtml, {
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control": "no-cache",
+        },
+      });
+    }
   }
 
   let browser;
@@ -91,9 +125,16 @@ export async function GET(request: NextRequest) {
         hasTouch: true,
       });
     }
+
+    console.log("Navigating to the page", parsedUrl.toString());
     
     // Navigate to the page and wait for it to load
-    await page.goto(parsedUrl.toString(), { waitUntil: "networkidle2" });
+    await page.goto(parsedUrl.toString(), {
+      waitUntil: "domcontentloaded",
+      timeout: 30000,
+    });
+
+    console.log("Page loaded");
     
     // Wait a bit more to ensure all dynamic content is loaded
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -174,6 +215,9 @@ export async function GET(request: NextRequest) {
     
     // Get the modified HTML content
     const modifiedHtml = await page.content();
+    await redis.set(storageKey, modifiedHtml);
+
+    console.log("Modified HTML length:", modifiedHtml.length);
     
     return new NextResponse(modifiedHtml, {
       headers: {
