@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const maxDuration = 60;
+
 export async function GET(request: NextRequest) {
   const puppeteerCore = await import("puppeteer-core");
   const puppeteer = await import("puppeteer");
