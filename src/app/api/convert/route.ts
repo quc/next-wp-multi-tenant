@@ -183,7 +183,6 @@ export async function GET(request: NextRequest) {
                   // Convert canvas to image
                   const img = document.createElement("img");
                   img.src = canvas.toDataURL("image/png");
-                  img.loading = "eager";
                   img.className = "no-lazy";
 
                   // Style like inline text
