@@ -18,9 +18,9 @@ module.exports = {
 			hostUrl: process.env.NEXT_PUBLIC_HOST_URL_TUBEMAGNET,
 		},
 		{
-			slug: 'omgtok',
-            sourceUrl: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_OMGTOK,
-			hostUrl: process.env.NEXT_PUBLIC_HOST_URL_OMGTOK,
+			slug: 'instalever',
+            sourceUrl: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_INSTALEVER,
+			hostUrl: process.env.NEXT_PUBLIC_HOST_URL_INSTALEVER,
 		},
 	],
 	integrations: {

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function NotFound() {
+  // const resolvedParams = await params;
   const pathname = usePathname();
   
   // Extract site parameter from pathname
@@ -16,74 +17,61 @@ export default function NotFound() {
   const themes = {
     tubemagnet: {
       cssVars: {
-        '--gradient-primary': 'linear-gradient(to right, #6A35D9, #5A2BC7)',
+        '--gradient-primary': '#0060FB',
+        '--gradient-primary-start': '#0060FB',
+        '--gradient-primary-end': '#0060FB',
+        '--secondary-color': '#0060FB',
         '--color-text-primary': '#333333',
         '--color-text-secondary': '#555555',
         '--color-background': '#FFFFFF',
         '--color-background-secondary': '#F5F5F5',
         '--color-button-text': '#FFFFFF',
         '--color-border': '#E0E0E0',
-        '--font-family-serif': 'Georgia, serif',
-        '--font-family-sans-serif': 'Inter, sans-serif'
+        '--font-family-serif': 'Open Sans, serif',
+        '--font-family-sans-serif': 'Inter, sans-serif',
       },
       brand: {
-        nameFirst: 'TUBE',
-        nameSecond: 'MAGNET',
+        nameFirst: 'TubeMagnet',
+        nameSecond: '',
+        headerImage: '/assets/header.png',
         platform: 'YouTube™',
-        description: 'Channel Growth'
+        platformType: 'Channel',
+        description: 'Channel Growth',
       }
     },
-    omgtok: {
+    instalever: {
       cssVars: {
-        '--gradient-primary': 'linear-gradient(to right, #FFD700, #FFA500, #FF6347, #DA70D6)',
+        '--gradient-primary': 'linear-gradient(to bottom, #FFE13F, #FA709A)',
+        '--gradient-primary-start': '#FFE13F',
+        '--gradient-primary-end': '#FA709A',
+        '--secondary-color': '#FA709A',
         '--color-text-primary': '#333333',
         '--color-text-secondary': '#555555',
         '--color-background': '#FFFFFF',
         '--color-background-secondary': '#F5F5F5',
         '--color-button-text': '#FFFFFF',
         '--color-border': '#E0E0E0',
-        '--font-family-serif': 'Georgia, serif',
-        '--font-family-sans-serif': 'Inter, sans-serif'
+        '--font-family-serif': 'Afterglow, serif',
+        '--font-family-sans-serif': 'Inter, sans-serif',
       },
       brand: {
-        nameFirst: 'OMG',
-        nameSecond: 'TOK',
-        platform: 'TikTok™',
-        description: 'Account Visibility'
+        nameFirst: 'instalever',
+        nameSecond: '',
+        headerImage: '/assets/header.png',
+        platform: 'Instagram™',
+        platformType: 'Account',
+        description: 'Profile Visibility',
       }
     }
   };
 
   // Ensure we have a valid theme, fallback to tubemagnet
-  const theme = (site === 'tubemagnet' || site === 'omgtok') ? site : 'tubemagnet';
+  const theme = (site === 'tubemagnet' || site === 'instalever') ? site : 'tubemagnet';
   const currentTheme = themes[theme];
   const { cssVars, brand } = currentTheme;
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', ...cssVars }}>
-      <style jsx>{`
-        .gradient-text {
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .gradient-bg {
-          background: var(--gradient-primary);
-        }
-        .serif-headline {
-          font-family: var(--font-family-serif);
-        }
-        .sans-serif-text {
-          font-family: var(--font-family-sans-serif);
-        }
-        .triangle-icon {
-          width: 24px;
-          height: 24px;
-          background: var(--gradient-primary);
-          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-      `}</style>
 
       {/* Header */}
       <Header theme={theme} brand={brand} />
@@ -91,10 +79,10 @@ export default function NotFound() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-4 serif-headline" style={{ color: 'var(--color-text-primary)' }}>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4 serif-headline primary-textcolor">
             404 - Page Not Found
           </h1>
-          <p className="text-lg mb-8 sans-serif-text" style={{ color: 'var(--color-text-secondary)' }}>
+          <p className="text-lg mb-8 sans-serif-text primary-textcolor">
             Sorry, the page you are looking for does not exist.
           </p>
           <Link

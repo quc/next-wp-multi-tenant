@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 const iconOrigin = {
     tubemagnet: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_TUBEMAGNET,
-    omgtok: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_OMGTOK,
+    instalever: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_INSTALEVER,
     default: 'localhost:3000',
 }
 

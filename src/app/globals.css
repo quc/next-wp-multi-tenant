@@ -95,4 +95,67 @@
     scrollbar-width: none;
     /* Firefox */
   }
+  
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .color-secondary-text {
+    background: var(--secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .color-secondary-font {
+    color: var(--secondary-color);
+  }
+
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+
+  /* Gradient color variables for SVG fills */
+  :root {
+    --gradient-primary-start: #0060FB;
+    --gradient-primary-end: #0060FB;
+  }
+
+  .secondary-bg {
+    background: var(--secondary-color);
+  }
+
+  .primary-textcolor {
+    color: var(--color-text-primary);
+  }
+  
+  .secondary-textcolor {
+    color: var(--color-text-secondary);
+  }
+
+  .solid-gradient-text {
+  
+    display: inline-block;                 /* one box = one gradient */
+    background: var(--gradient-primary) no-repeat;
+    background-size: 100% 100%;            /* cover whole block */
+    background-position: 0 0;
+  
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* optional: make sure it doesn’t clone per line in some browsers */
+    box-decoration-break: slice;
+    -webkit-box-decoration-break: slice;
+  }
+
+  .serif-headline {
+    font-family: var(--font-family-serif);
+  }
+  .sans-serif-text {
+    font-family: var(--font-family-sans-serif);
+  }
+
 }

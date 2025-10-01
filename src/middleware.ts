@@ -9,8 +9,11 @@ export const config = {
 		 * 2. /_next (Next.js internals)
 		 * 3. /fonts (inside /public)
 		 * 4. static files (but include favicon.ico for custom routing)
+		 * 5. /icons (inside /public)
+		 * 6. /tubemagnet and /instalever static files
+		 * 7. /assets paths (handled by rewrite rules)
 		 */
-		'/((?!api|cache-healthcheck|_next|fonts[\\w-]+\\.\\w+).*)',
+		'/((?!api|cache-healthcheck|_next|fonts[\\w-]+\\.\\w+|icons/.*|tubemagnet/.*|instalever/.*|assets/.*).*)',
 	],
 };
 

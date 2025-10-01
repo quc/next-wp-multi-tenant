@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 export default function TrustedBySection() {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--color-background-secondary)' }}>
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         {/* Main Heading */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-bold serif-headline" style={{ color: 'var(--color-text-primary)' }}>
-            Trusted by <span className="gradient-text">17,000+</span> Influencers and Brands
+          <h2 className="text-3xl lg:text-4xl font-bold serif-headline primary-textcolor">
+            Trusted by <span className="color-secondary-text">17,000+</span> <br />Influencers and Brands
           </h2>
           <p className="text-lg sans-serif-text" style={{ color: 'var(--color-text-secondary)' }}>
             Trusted and used for external marketing and promotion by leading influencers and brands.

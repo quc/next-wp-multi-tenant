@@ -22,10 +22,10 @@ export default function Footer({ brand }: FooterProps) {
             <Link href="/#contact" className="text-white hover:text-gray-300 transition-colors sans-serif-text">
               Contact
             </Link>
-            <Link href="/#privacy" className="text-white hover:text-gray-300 transition-colors sans-serif-text">
+            <Link href="/privacy" className="text-white hover:text-gray-300 transition-colors sans-serif-text">
               Privacy Policy
             </Link>
-            <Link href="/#terms" className="text-white hover:text-gray-300 transition-colors sans-serif-text">
+            <Link href="/terms" className="text-white hover:text-gray-300 transition-colors sans-serif-text">
               Terms and Conditions
             </Link>
           </div>

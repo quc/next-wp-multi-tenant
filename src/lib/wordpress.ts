@@ -75,6 +75,8 @@ async function wordpressFetch<T>(
   // Create cache tags based on site
   const cacheTags = siteSlug ? [`wordpress-${siteSlug}`, "wordpress"] : ["wordpress"];
 
+  console.log('url', url);
+
   const response = await fetch(url, {
     headers: {
       "User-Agent": userAgent,

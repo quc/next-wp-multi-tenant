@@ -116,7 +116,7 @@ export async function GET(request: NextRequest) {
     }
     
     const filename = `screenshot-${viewportParam}${selectorParam ? `-${selectorParam.replace(/[^a-zA-Z0-9]/g, '_')}` : ''}.png`;
-    return new NextResponse(screenshot, {
+    return new NextResponse(screenshot as BodyInit, {
       headers: {
         "Content-Type": "image/png",
         "Content-Disposition": `inline; filename="${filename}"`,
