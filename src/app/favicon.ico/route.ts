@@ -8,6 +8,11 @@ export const dynamic = "force-dynamic";
 const iconOrigin = {
     tubemagnet: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_TUBEMAGNET,
     instalever: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_INSTALEVER,
+    xgrowlab: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_XGROWLAB,
+    streameredge: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_STREAMEREDGE,
+    bolderbook: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_BOLDERBOOK,
+    omgtok: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_OMGTOK,
+    earforge: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_EARFORGE,
     default: 'localhost:3000',
 }
 

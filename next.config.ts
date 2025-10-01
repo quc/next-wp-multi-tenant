@@ -19,39 +19,29 @@ const nextConfig: NextConfig = {
 		return config;
 	},
 	async rewrites() {
+		const domains = ['tubemagnet', 'instalever', 'xgrowlab', 'streameredge', 'bolderbook', 'omgtok', 'earforge'];
+		
+		const domainRewrites = domains.flatMap(domain => [
+			{
+				source: '/assets/:path*',
+				has: [{ type: 'header', key: 'host', value: `^${domain}\\.localhost(?::\\d+)?$` }],
+				destination: `/${domain}/:path*`,
+			},
+			{
+				source: '/assets/:path*',
+				has: [{ type: 'header', key: 'host', value: `^${domain}\\.com$` }],
+				destination: `/${domain}/:path*`,
+			},
+		]);
+
 		return {
-		  beforeFiles: [
-			// DEV: instalever.localhost -> /instalever/*
-			{
-			  source: '/assets/:path*',
-			  has: [{ type: 'header', key: 'host', value: '^instalever\\.localhost(?::\\d+)?$' }],
-			  destination: '/instalever/:path*',
-			},
-			// DEV: tubemagnet.localhost -> /tubemagnet/*
-			{
-			  source: '/assets/:path*',
-			  has: [{ type: 'header', key: 'host', value: '^tubemagnet\\.localhost(?::\\d+)?$' }],
-			  destination: '/tubemagnet/:path*',
-			},
-	
-			// (Optional) PROD examples:
-			// {
-			//   source: '/assets/:path*',
-			//   has: [{ type: 'header', key: 'host', value: '^instalever\\.yourdomain\\.com$' }],
-			//   destination: '/instalever/:path*',
-			// },
-			// {
-			//   source: '/assets/:path*',
-			//   has: [{ type: 'header', key: 'host', value: '^tubemagnet\\.yourdomain\\.com$' }],
-			//   destination: '/tubemagnet/:path*',
-			// },
-	
-			// Fallback (unknown hosts) → tubemagnet by default
-			{
-			  source: '/assets/:path*',
-			  destination: '/tubemagnet/:path*',
-			},
-		  ],
+			beforeFiles: [
+				...domainRewrites,
+				{
+					source: '/assets/:path*',
+					destination: '/tubemagnet/:path*',
+				},
+			],
 		};
 	},
 };
