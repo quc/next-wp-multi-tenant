@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 interface HeaderProps {
-  theme: 'tubemagnet' | 'instalever';
+  theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
   brand: {
     nameFirst: string;
     nameSecond: string;

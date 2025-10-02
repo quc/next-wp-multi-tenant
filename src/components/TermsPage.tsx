@@ -1,61 +1,13 @@
+import themes from "@/themes";
 import Footer from "./Footer";
 import Header from "./Header";
 
 interface TermsPageProps {
-    theme: 'tubemagnet' | 'instalever';
+    theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
   }
   
   export default function TermsPage({ theme }: TermsPageProps) {
-    const themes = {
-        tubemagnet: {
-          cssVars: {
-            '--gradient-primary': '#0060FB',
-            '--gradient-primary-start': '#0060FB',
-            '--gradient-primary-end': '#0060FB',
-            '--secondary-color': '#0060FB',
-            '--color-text-primary': '#333333',
-            '--color-text-secondary': '#555555',
-            '--color-background': '#FFFFFF',
-            '--color-background-secondary': '#F5F5F5',
-            '--color-button-text': '#FFFFFF',
-            '--color-border': '#E0E0E0',
-            '--font-family-serif': 'Open Sans, serif',
-            '--font-family-sans-serif': 'Inter, sans-serif',
-          },
-          brand: {
-            nameFirst: 'TubeMagnet',
-            nameSecond: '',
-            headerImage: '/assets/header.png',
-            platform: 'YouTube™',
-            platformType: 'Channel',
-            description: 'Channel Growth',
-          }
-        },
-        instalever: {
-          cssVars: {
-            '--gradient-primary': 'linear-gradient(to bottom, #FFE13F, #FA709A)',
-            '--gradient-primary-start': '#FFE13F',
-            '--gradient-primary-end': '#FA709A',
-            '--secondary-color': '#FA709A',
-            '--color-text-primary': '#333333',
-            '--color-text-secondary': '#555555',
-            '--color-background': '#FFFFFF',
-            '--color-background-secondary': '#F5F5F5',
-            '--color-button-text': '#FFFFFF',
-            '--color-border': '#E0E0E0',
-            '--font-family-serif': 'Afterglow, serif',
-            '--font-family-sans-serif': 'Inter, sans-serif',
-          },
-          brand: {
-            nameFirst: 'instalever',
-            nameSecond: '',
-            headerImage: '/assets/header.png',
-            platform: 'Instagram™',
-            platformType: 'Account',
-            description: 'Profile Visibility',
-          },
-        }
-    };
+    // @ts-ignore
     const currentTheme = themes[theme];
     const { cssVars, brand } = currentTheme;
 
