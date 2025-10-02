@@ -7,19 +7,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const site = host?.split('.')[0];
   return [
     {
-      url: `http://${site}.localhost:3000`,
+      url: `http://${site}.com`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: `http://${site}.localhost:3000/posts`,
+      url: `http://${site}.com/privacy`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `http://${site}.localhost:3000/pages`,
+      url: `http://${site}.com/terms`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,

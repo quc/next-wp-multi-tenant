@@ -11,6 +11,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: `http://${site}.localhost:3000/sitemap.xml`,
+    sitemap: `http://${site}.com/sitemap.xml`,
   }
 }
