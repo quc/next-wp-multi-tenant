@@ -1,4 +1,4 @@
-import themes from "@/themes";
+import { resolveTheme } from "@/themes";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -7,15 +7,15 @@ interface LandingPageProps {
   }
   
   export default function PrivacyPage({ theme }: LandingPageProps) {
-    // @ts-ignore
-    const currentTheme = themes[theme];
+
+    const currentTheme = resolveTheme(theme);
     const { cssVars, brand } = currentTheme;
 
     
 
     return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', ...cssVars }}>
-        <Header theme={theme} brand={brand} />
+        <Header brand={brand} />
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <h1 className="text-4xl lg:text-6xl font-bold mb-8 serif-headline primary-textcolor">
                 Privacy Policy

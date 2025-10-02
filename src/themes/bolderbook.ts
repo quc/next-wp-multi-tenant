@@ -17,6 +17,8 @@ const theme ={
       nameFirst: 'bolderbook',
       nameSecond: '',
       headerImage: '/assets/header.svg',
+      headerImageClass: '',
+      headerIsShowName: true,
       platform: 'Facebook™',
       platformType: 'Pages',
       description: 'Page Visibility',

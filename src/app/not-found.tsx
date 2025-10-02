@@ -1,29 +1,26 @@
-'use client';
+// 'use client';
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import themes from "@/themes";
+import { resolveTheme } from "@/themes";
+import { headers } from "next/headers";
 
-export default function NotFound() {
+export default async function NotFound() {
   // const resolvedParams = await params;
-  const pathname = usePathname();
+  const hdrs = await headers();
+  const host = hdrs.get("host");
+  const site = host?.split('.')[0];
   
-  // Extract site parameter from pathname
-  const siteMatch = pathname.match(/^\/([^\/]+)/);
-  const site = siteMatch ? siteMatch[1] : 'tubemagnet';
-  
-  // Theme configurations (same as LandingPage)
-  // @ts-ignore
-  const currentTheme = themes[site];
+  // const site = 'tubemagnet';
+  const currentTheme = resolveTheme(site);
   const { cssVars, brand } = currentTheme;
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', ...cssVars }}>
 
       {/* Header */}
-      <Header theme={currentTheme} brand={brand} />
+      <Header brand={brand} />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -35,7 +32,7 @@ export default function NotFound() {
             Sorry, the page you are looking for does not exist.
           </p>
           <Link
-            href={`/${currentTheme === 'tubemagnet' ? 'home' : 'home2'}`}
+            href={'home'}
             className="gradient-bg text-white px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90 transition-opacity sans-serif-text"
           >
             Return Home

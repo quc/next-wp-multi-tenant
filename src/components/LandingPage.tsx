@@ -1,11 +1,9 @@
 'use client';
 
-import Image from "next/image";
 import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
 import TrustedBySection from "./TrustedBySection";
-import { useState } from "react";
 import ChannelMarketing from "./ChannelMarketing";
 import WhyGrowing from "./WhyGrowing";
 import Feedbacks from "./Feedbacks";
@@ -20,7 +18,7 @@ import ContactUs from "./ContactUs";
 import ImageWithPhone from "./ImageWithPhone";
 import PricingSection from "./PricingSection";
 import { Ubuntu } from 'next/font/google';
-import themes from '@/themes';
+import { resolveTheme } from '@/themes';
 
 interface LandingPageProps {
   theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
@@ -36,9 +34,7 @@ const ubuntu = Ubuntu({
 
 export default function LandingPage({ theme }: LandingPageProps) {
 
-
-  // @ts-ignore
-  const currentTheme = themes[theme];
+  const currentTheme = resolveTheme(theme);
   const { cssVars, brand } = currentTheme;
 
   // const [url, setUrl] = useState("");

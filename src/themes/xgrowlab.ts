@@ -17,6 +17,8 @@ const theme ={
       nameFirst: 'xgrowlab',
       nameSecond: '',
       headerImage: '/assets/header.svg',
+      headerImageClass: '',
+      headerIsShowName: true,
       platform: 'X™',
       platformType: 'Profile',
       description: 'Profile Visibility',

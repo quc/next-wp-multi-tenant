@@ -10,7 +10,7 @@ interface SimpleStepsProps {
     platform: string;
     simpleSteps: {
       imgClass?: string;
-      desctiption: string;
+      description: string;
       image: string;
       firstStep: string;
       firstStepDescription: string;
@@ -48,7 +48,7 @@ export default function SimpleSteps({ brand }: SimpleStepsProps) {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold serif-headline mb-4 primary-textcolor">
-            3 Simple Steps To Increase Your <span className='gradient-text'>{brand.simpleSteps.desctiption}</span>
+            3 Simple Steps To Increase Your <span className='gradient-text'>{brand.simpleSteps.description}</span>
           </h2>
           <p className="text-lg sans-serif-text secondary-textcolor">
             We handle the channel promotion so you can focus on creating content.

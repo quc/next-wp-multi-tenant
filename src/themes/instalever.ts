@@ -17,6 +17,8 @@ const theme = {
       nameFirst: 'instalever',
       nameSecond: '',
       headerImage: '/assets/header.svg',
+      headerImageClass: '',
+      headerIsShowName: true,
       platform: 'Instagram™',
       platformType: 'Account',
       description: 'Profile Visibility',
@@ -94,7 +96,7 @@ const theme = {
         }
       ],
       simpleSteps: {
-        desctiption: 'Instagram™ Account Visability',
+        description: 'Instagram™ Account Visability',
         imgClass: '[transform:scaleX(-1)]',
         image: '/assets/img-two.png',
         firstStep: '1. Define Your Target Demographics',

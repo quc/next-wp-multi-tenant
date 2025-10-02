@@ -4,15 +4,16 @@ import Link from "next/link";
 import { useState } from "react";
 
 interface HeaderProps {
-  theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
   brand: {
     nameFirst: string;
     nameSecond: string;
     headerImage: string;
+    headerImageClass: string;
+    headerIsShowName: boolean;
   };
 }
 
-export default function Header({ theme, brand }: HeaderProps) {
+export default function Header({ brand }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -26,11 +27,13 @@ export default function Header({ theme, brand }: HeaderProps) {
           {/* Logo */}
           <Link href={`/`} className="flex items-center space-x-2">
             {/* Triangle Icon for instalever, simple square for tubemagnet */}
-            <img src={brand.headerImage} alt="header image" className="w-12 h-12" />
-            <span className="text-2xl font-bold sans-serif-text">
-              <span className="gradient-text serif-headline">{brand.nameFirst}</span>
-              <span className="primary-textcolor">{brand.nameSecond}</span>
-            </span>
+            <img src={brand.headerImage} alt="header image" className={brand.headerImageClass || 'w-12 h-12'} />
+            {brand.headerIsShowName && (
+              <span className="text-2xl font-bold sans-serif-text">
+                <span className="gradient-text serif-headline">{brand.nameFirst}</span>
+                <span className="primary-textcolor">{brand.nameSecond}</span>
+              </span>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
