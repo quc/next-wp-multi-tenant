@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { generateSiteMetadata, generateYoastMetadata } from "./wordpress";
 import type { YoastSEO } from "./wordpress.d";
+import { resolveTheme } from "@/themes";
 
 // Utility function to strip HTML tags and limit text length
 export function stripHtmlAndLimit(text: string, limit: number = 160): string {
@@ -25,35 +26,55 @@ export function generateOgImageUrl(title: string, description?: string): string 
 // Generate base metadata for the site
 export async function generateBaseMetadata(siteSlug?: string): Promise<Metadata> {
   const wpMetadata = await generateSiteMetadata(siteSlug);
+
+  const currentTheme = resolveTheme(siteSlug);
+  const { meta } = currentTheme;
+
+  const faviconSvg = meta.icon;
+	const faviconIco = meta.icon;
   
   return {
     metadataBase: new URL(wpMetadata.url),
     title: {
-      default: wpMetadata.title,
-      template: `%s | ${wpMetadata.siteName}`,
+      default: meta.title,
+      template: `%s - ${meta.title}`,
     },
-    description: wpMetadata.description,
+    icons: {
+      icon: [
+        {
+        url: faviconSvg,
+        type: 'image/svg+xml',
+        },
+        {
+        url: faviconIco,
+        type: 'image/x-icon',
+        }
+      ],
+      shortcut: faviconIco,
+      apple: faviconIco,
+    },
+    description: meta.description,
     openGraph: {
       type: "website",
       locale: "en_US",
       url: wpMetadata.url,
-      siteName: wpMetadata.siteName,
-      title: wpMetadata.title,
-      description: wpMetadata.description,
+      siteName: meta.title,
+      title: meta.title,
+      description: meta.description,
       images: [
         {
-          url: generateOgImageUrl(wpMetadata.title, wpMetadata.description),
+          url: generateOgImageUrl(meta.title, meta.description),
           width: 1200,
           height: 630,
-          alt: wpMetadata.title,
+          alt: meta.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: wpMetadata.title,
-      description: wpMetadata.description,
-      images: [generateOgImageUrl(wpMetadata.title, wpMetadata.description)],
+      title: meta.title,
+      description: meta.description,
+      images: [generateOgImageUrl(meta.title, meta.description)],
     },
     robots: {
       index: false,
