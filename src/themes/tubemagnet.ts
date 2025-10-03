@@ -268,7 +268,7 @@ const theme = {
         },
         {
           question: "Is This Service Platform Compliant?",
-          answer: "Yes, absolutely. All our marketing strategies are designed to respect YouTube™™'s terms of service and community guidelines. We use only platform-friendly methods and stay current with platform updates to ensure our external marketing approach remains compliant and effective.",
+          answer: "Yes, absolutely. All our marketing strategies are designed to respect YouTube™'s terms of service and community guidelines. We use only platform-friendly methods and stay current with platform updates to ensure our external marketing approach remains compliant and effective.",
         },
         {
           question: "Will This Service Work for Me?",
