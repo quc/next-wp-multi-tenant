@@ -1,6 +1,7 @@
 const theme = {
     cssVars: {
       '--gradient-primary': 'linear-gradient(to bottom, #FFE13F, #FA709A)',
+      '--gradient-primary-checkout-icon-bg': 'linear-gradient(to bottom, #FFE13F33, #FA709A33)',
       '--gradient-primary-start': '#FFE13F',
       '--gradient-primary-end': '#FA709A',
       '--secondary-color': '#FA709A',
@@ -13,7 +14,28 @@ const theme = {
       '--font-family-serif': 'Afterglow, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+        title: 'Instalever',
+        icon: '/assets/header.svg',
+        description: 'Instalever is a platform that helps you grow your Instagram™ account with strategic promotion.',
+        keywords: ['Instagram™', 'Account', 'Promotion', 'Growth'],
+        robots: {
+          index: true,
+          follow: true,
+        },
+        og: {
+          title: 'Instalever',
+          description: 'Instalever is a platform that helps you grow your Instagram™ account with strategic promotion.',
+          image: '/assets/og.png',
+        },
+        twitter: {
+          title: 'Instalever',
+          description: 'Instalever is a platform that helps you grow your Instagram™ account with strategic promotion.',
+          image: '/assets/og.png',
+        },
+      },
     brand: {
+      name: 'Instalever',
       nameFirst: 'instalever',
       nameSecond: '',
       headerImage: '/assets/header.svg',
@@ -36,6 +58,10 @@ const theme = {
         { name: 'Andrew', time: '3m ago' }
       ],
       video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      checkout: {
+        summaryTitle: 'Premium Instagram™ Account Growth Package',
+        summaryText: 'Boost your Instagram™ account with authentic followers and engagement that drives real business results.'
+      },
       videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
       whyGrowing: {
         challenges: [
@@ -181,7 +207,7 @@ const theme = {
       promotionToolkit: {
         type: 'Account',
         image: '/assets/img-three.png',
-        tool: 'XGrowLab',
+        tool: 'InstaLever',
         leftFeatures: [
           {
             title: 'Adaptive Performance Tracking',

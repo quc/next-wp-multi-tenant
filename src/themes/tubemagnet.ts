@@ -1,6 +1,7 @@
 const theme = {
     cssVars: {
       '--gradient-primary': '#0060FB',
+      '--gradient-primary-checkout-icon-bg': '#E8F1FF',
       '--gradient-primary-start': '#0060FB',
       '--gradient-primary-end': '#0060FB',
       '--secondary-color': '#0060FB',
@@ -13,7 +14,28 @@ const theme = {
       '--font-family-serif': 'Open Sans, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+        title: 'TubeMagnet',
+        icon: '/assets/header.svg',
+        description: 'TubeMagnet is a platform that helps you grow your YouTube™ channel with strategic promotion.',
+        keywords: ['YouTube™', 'Channel', 'Promotion', 'Growth'],
+        robots: {
+          index: true,
+          follow: true,
+        },
+        og: {
+          title: 'TubeMagnet',
+          description: 'TubeMagnet is a platform that helps you grow your YouTube™ channel with strategic promotion.',
+          image: '/assets/og.png',
+        },
+        twitter: {
+          title: 'TubeMagnet',
+          description: 'TubeMagnet is a platform that helps you grow your YouTube™ channel with strategic promotion.',
+          image: '/assets/og.png',
+        },
+      },
     brand: {
+      name: 'TubeMagnet',
       nameFirst: 'TubeMagnet',
       nameSecond: '',
       headerImage: '/assets/header.svg',
@@ -36,6 +58,10 @@ const theme = {
         { name: 'Andrew', time: '3m ago' }
       ],
       video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      checkout: {
+        summaryTitle: 'Premium YouTube™ Channel Growth Package',
+        summaryText: 'Get professional YouTube™ channel promotion that delivers real, engaged subscribers who care about your content.'
+      },
       videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
       whyGrowing: {
         challenges: [
@@ -179,7 +205,7 @@ const theme = {
       },
       promotionToolkit: {
         type: 'Channel',
-        tool: 'Tubemagnet',
+        tool: 'TubeMagnet',
         image: '/assets/img-three.png',
         leftFeatures: [
           {

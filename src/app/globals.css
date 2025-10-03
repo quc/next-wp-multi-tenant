@@ -118,6 +118,10 @@
     background: var(--gradient-primary);
   }
 
+  .gradient-checkout-icon-bg {
+    background: var(--gradient-primary-checkout-icon-bg);
+  }
+
   /* Gradient color variables for SVG fills */
   :root {
     --gradient-primary-start: #0060FB;

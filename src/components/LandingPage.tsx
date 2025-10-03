@@ -190,7 +190,7 @@ export default function LandingPage({ theme }: LandingPageProps) {
       <FAQ brand={brand} />
 
       {/* Contact Us Section */}
-      <ContactUs />
+      <ContactUs brand={brand} />
 
       {/* <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-gray-50">
       <div className="w-full max-w-2xl text-center">

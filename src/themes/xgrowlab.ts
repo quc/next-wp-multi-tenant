@@ -1,6 +1,7 @@
 const theme ={
     cssVars: {
       '--gradient-primary': '#333333',
+      '--gradient-primary-checkout-icon-bg': '#33333333',
       '--gradient-primary-start': '#333333',
       '--gradient-primary-end': '#333333',
       '--secondary-color': '#333333',
@@ -13,7 +14,28 @@ const theme ={
       '--font-family-serif': 'var(--font-ubuntu), serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+        title: 'XGrowLab',
+        icon: '/assets/header.svg',
+        description: 'XGrowLab is a platform that helps you grow your X™ profile with strategic promotion.',
+        keywords: ['X™', 'Profile', 'Promotion', 'Growth'],
+        robots: {
+          index: true,
+          follow: true,
+        },
+        og: {
+          title: 'XGrowLab',
+          description: 'XGrowLab is a platform that helps you grow your X™ profile with strategic promotion.',
+          image: '/assets/og.png',
+        },
+        twitter: {
+          title: 'XGrowLab',
+          description: 'XGrowLab is a platform that helps you grow your X™ profile with strategic promotion.',
+          image: '/assets/og.png',
+        },
+      },
     brand: {
+      name: 'XGrowLab',
       nameFirst: 'xgrowlab',
       nameSecond: '',
       headerImage: '/assets/header.svg',
@@ -36,6 +58,10 @@ const theme ={
         { name: 'Andrew', time: '3m ago' }
       ],
       video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      checkout: {
+        summaryTitle: 'Premium X™ Profile Growth Package',
+        summaryText: 'Amplify your X™ profile reach with targeted promotion that attracts your ideal audience and drives meaningful engagement.'
+      },
       videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
       whyGrowing: {
         challenges: [

@@ -25,13 +25,13 @@ interface LandingPageProps {
                 <div className="mb-8">
                     <h2 className="text-2xl font-bold mb-4 sans-serif-text primary-textcolor">Overview</h2>
                     <p className="mb-4 sans-serif-text secondary-textcolor leading-relaxed">
-                        This website is operated by {brand.nameFirst} LLC. By visiting any websites operated by {brand.nameFirst} LLC, you are consenting to our privacy policy. Throughout the site, the terms &quot;we&quot;, &quot;us&quot; and &quot;our&quot; refer to {brand.nameFirst} LLC. {brand.nameFirst} LLC is committed to protecting your privacy online. This Privacy Policy describes the personal information we collect through this website. The terms &quot;user,&quot; &quot;you,&quot; and &quot;your&quot; refer to site visitors, customers, and any other users of the site.
+                        This website is operated by Verendus LLC. By visiting any websites operated by Verendus LLC, you are consenting to our privacy policy. Throughout the site, the terms &quot;we&quot;, &quot;us&quot; and &quot;our&quot; refer to Verendus LLC. Verendus LLC is committed to protecting your privacy online. This Privacy Policy describes the personal information we collect through this website. The terms &quot;user,&quot; &quot;you,&quot; and &quot;your&quot; refer to site visitors, customers, and any other users of the site.
                     </p>
                     <p className="mb-4 sans-serif-text secondary-textcolor leading-relaxed">
                         The term &quot;personal information&quot; is defined as information that you voluntarily provide to us that personally identifies you and/or your contact information, such as your name, phone number, and email address.
                     </p>
                     <p className="mb-4 sans-serif-text secondary-textcolor leading-relaxed">
-                        Use of our websites, including all materials presented herein and all online services provided by {brand.nameFirst} LLC. is subject to the following Privacy Policy. This Privacy Policy applies to all site visitors, customers, and all other users of the site. By using the Site or Service, you agree to this Privacy Policy, without modification, and acknowledge reading it.
+                        Use of our websites, including all materials presented herein and all online services provided by Verendus LLC. is subject to the following Privacy Policy. This Privacy Policy applies to all site visitors, customers, and all other users of the site. By using the Site or Service, you agree to this Privacy Policy, without modification, and acknowledge reading it.
                     </p>
                 </div>
 
@@ -43,7 +43,7 @@ interface LandingPageProps {
                     <p className="mb-4 sans-serif-text secondary-textcolor leading-relaxed">This includes:</p>
                     <ul className="list-disc pl-6 mb-4 sans-serif-text secondary-textcolor leading-relaxed">
                         <li className="mb-2">Your name, address, email address, phone number and other personal information. This information is shared with our e-commerce software providers to ensure completion of your order. We use your email to communicate with you about your order and to manage our customer relationship with you. When you place an order you may be added to our mailing list from which you can unsubscribe at any time using the unsubscribe link in each email.</li>
-                        <li className="mb-2">Your payment information. We collect payment information for each order but we do not store payment information on {brand.nameFirst} LLC servers. Your payment information is securely communicated to and processed via our e-commerce software providers.</li>
+                        <li className="mb-2">Your payment information. We collect payment information for each order but we do not store payment information on Verendus LLC servers. Your payment information is securely communicated to and processed via our e-commerce software providers.</li>
                     </ul>
                     <p className="mb-4 sans-serif-text secondary-textcolor leading-relaxed">
                         We only collect the personal information you voluntarily provide to us which may include:

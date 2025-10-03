@@ -1,6 +1,7 @@
 const theme ={
     cssVars: {
       '--gradient-primary': '#144579',
+      '--gradient-primary-checkout-icon-bg': '#DAECFF',
       '--gradient-primary-start': '#144579',
       '--gradient-primary-end': '#144579',
       '--secondary-color': '#144579',
@@ -13,7 +14,28 @@ const theme ={
       '--font-family-serif': 'var(--font-ubuntu), serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+      title: 'StreamerEdge',
+      icon: '/assets/header.svg',
+      description: 'StreamerEdge is a platform that helps you grow your Twitch™ channel with strategic promotion.',
+      keywords: ['Twitch™', 'Channel', 'Promotion', 'Growth'],
+      robots: {
+        index: true,
+        follow: true,
+      },
+      og: {
+        title: 'StreamerEdge',
+        description: 'StreamerEdge is a platform that helps you grow your Twitch™ channel with strategic promotion.',
+        image: '/assets/og.png',
+      },
+      twitter: {
+        title: 'StreamerEdge',
+        description: 'StreamerEdge is a platform that helps you grow your Twitch™ channel with strategic promotion.',
+        image: '/assets/og.png',
+      },
+    },
     brand: {
+      name: 'StreamerEdge',
       nameFirst: 'streameredge',
       nameSecond: '',
       headerImage: '/assets/header.svg',
@@ -36,6 +58,10 @@ const theme ={
         { name: 'Andrew', time: '3m ago' }
       ],
       video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      checkout: {
+        summaryTitle: 'Premium Twitch™ Channel Growth Package',
+        summaryText: 'Elevate your Twitch™ channel with strategic promotion that brings dedicated viewers who love your content.'
+      },
       videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
       whyGrowing: {
         challenges: [
@@ -111,7 +137,7 @@ const theme ={
         subtitle: 'Choose the perfect plan for your Twitch™ channel growth needs',
         packages: [
           {
-            name: 'StreamEdge Lite',
+            name: 'StreamerEdge Lite',
             price: '$69',
             description: 'Hands-off channel promotion to get more followers, engagement and reach. For personal channels looking for fast organic growth.',
             features: [
@@ -124,7 +150,7 @@ const theme ={
             ]
           },
           {
-            name: 'StreamEdge Standard',
+            name: 'StreamerEdge Standard',
             price: '$99',
             description: 'Hands-off channel promotion to get more followers, engagement and reach. For upcoming influencers and businesses looking for significantly faster growth.',
             features: [
@@ -138,7 +164,7 @@ const theme ={
             isPopular: true
           },
           {
-            name: 'StreamEdge Premium',
+            name: 'StreamerEdge Premium',
             price: '$199',
             description: 'Hands-off channel promotion to get more followers, engagement and reach. Exponential organic growth that easily outpaces your competition.',
             features: [
@@ -181,7 +207,7 @@ const theme ={
       promotionToolkit: {
         type: 'Channel',
         image: '/assets/img-three.png',
-        tool: 'StreamEdge',
+        tool: 'StreamerEdge',
         leftFeatures: [
           {
             title: 'Adaptive Performance Tracking',
@@ -230,7 +256,7 @@ const theme ={
       },
       transparentPrice: {
         platform: 'Twitch™ Channel',
-        tool: 'StreamEdge'
+        tool: 'StreamerEdge'
       },
       faq: [
         {

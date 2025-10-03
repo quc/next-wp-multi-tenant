@@ -1,6 +1,7 @@
 const theme ={
     cssVars: {
       '--gradient-primary': '#F9BF4B',
+      '--gradient-primary-checkout-icon-bg': '#FFF5E2',
       '--gradient-primary-start': '#F9BF4B',
       '--gradient-primary-end': '#F9BF4B',
       '--secondary-color': '#F9BF4B',
@@ -13,7 +14,28 @@ const theme ={
       '--font-family-serif': 'var(--font-ubuntu), serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+      title: 'EarForge',
+      icon: '/assets/header.svg',
+      description: 'EarForge is a platform that helps you grow your Spotify™ profile with strategic promotion.',
+      keywords: ['Spotify™', 'Profile', 'Promotion', 'Growth'],
+      robots: {
+        index: true,
+        follow: true,
+      },
+      og: {
+        title: 'EarForge',
+        description: 'EarForge is a platform that helps you grow your Spotify™ profile with strategic promotion.',
+        image: '/assets/og.png',
+      },
+      twitter: {
+        title: 'EarForge',
+        description: 'EarForge is a platform that helps you grow your Spotify™ profile with strategic promotion.',
+        image: '/assets/og.png',
+      },
+    },
     brand: {
+      name: 'EarForge',
       nameFirst: 'earforge',
       nameSecond: '',
       headerImage: '/assets/header.svg',
@@ -36,6 +58,10 @@ const theme ={
         { name: 'Andrew', time: '3m ago' }
       ],
       video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      checkout: {
+        summaryTitle: 'Premium Spotify™ Profile Growth Package',
+        summaryText: 'Amplify your Spotify™ profile with strategic promotion that attracts music lovers and builds your fanbase.'
+      },
       videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
       whyGrowing: {
         challenges: [

@@ -1,6 +1,7 @@
 const theme ={
     cssVars: {
       '--gradient-primary': '#7E5BF6',
+      '--gradient-primary-checkout-icon-bg': '#E0D7FE',
       '--gradient-primary-start': '#7E5BF6',
       '--gradient-primary-end': '#7E5BF6',
       '--secondary-color': '#7E5BF6',
@@ -13,7 +14,28 @@ const theme ={
       '--font-family-serif': 'Open Sans, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+      title: 'OmgTok',
+      icon: '/assets/header.svg',
+      description: 'OmgTok is a platform that helps you grow your TikTok™ profile with strategic promotion.',
+      keywords: ['TikTok™', 'Profile', 'Promotion', 'Growth'],
+      robots: {
+        index: true,
+        follow: true,
+      },
+      og: {
+        title: 'OmgTok',
+        description: 'OmgTok is a platform that helps you grow your TikTok™ profile with strategic promotion.',
+        image: '/assets/og.png',
+      },
+      twitter: {
+        title: 'OmgTok',
+        description: 'OmgTok is a platform that helps you grow your TikTok™ profile with strategic promotion.',
+        image: '/assets/og.png',
+      },
+    },
     brand: {
+      name: 'OmgTok',
       nameFirst: 'omgtok',
       nameSecond: '',
       headerImage: '/assets/header.svg',
@@ -36,6 +58,10 @@ const theme ={
         { name: 'Andrew', time: '3m ago' }
       ],
       video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      checkout: {
+        summaryTitle: 'Premium TikTok™ Account Growth Package',
+        summaryText: 'Boost your TikTok™ account with viral-worthy promotion that reaches millions of targeted viewers.'
+      },
       videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
       whyGrowing: {
         challenges: [
@@ -181,7 +207,7 @@ const theme ={
       promotionToolkit: {
         type: 'Profile',
         image: '/assets/img-three.png',
-        tool: 'StreamEdge',
+        tool: 'OmgTok',
         leftFeatures: [
           {
             title: 'Adaptive Performance Tracking',

@@ -79,10 +79,10 @@ export default function SimpleSteps({ brand }: SimpleStepsProps) {
                 
                 {/* Content */}
                 <div className="flex flex-col items-start">
-                  <h3 className="text-lg font-bold mb-2 sans-serif-text" style={{ color: 'var(--color-text-primary)' }}>
+                  <h3 className="text-lg font-bold mb-2 sans-serif-text primary-textcolor">
                     {step.title}
                   </h3>
-                  <p className="text-sm sans-serif-text leading-relaxed text-left" style={{ color: 'var(--color-text-secondary)' }}>
+                  <p className="text-sm sans-serif-text leading-relaxed text-left secondary-textcolor">
                     {step.description}
                   </p>
                 </div>

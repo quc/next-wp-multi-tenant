@@ -2,12 +2,19 @@
 
 import { useState } from 'react';
 
-export default function ContactUs() {
+interface ContactUsProps {
+  brand: {
+    platform: string;
+  };
+}
+
+export default function ContactUs({ brand }: ContactUsProps) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    message: ''
+    message: '',
+    platform: '',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -27,7 +34,8 @@ export default function ContactUs() {
       firstName: '',
       lastName: '',
       email: '',
-      message: ''
+      message: '',
+      platform: brand.platform,
     });
   };
 
@@ -41,7 +49,7 @@ export default function ContactUs() {
               Contact Us
             </h2>
             <p className="text-lg sans-serif-text leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              Message us and let&apos;s work together to increase your Twitch™ channel visibility
+              Message us and let&apos;s work together to increase your {brand.platform} visibility
             </p>
           </div>
 

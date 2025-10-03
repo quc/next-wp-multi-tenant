@@ -1,6 +1,7 @@
 const theme ={
     cssVars: {
       '--gradient-primary': '#B722FF',
+      '--gradient-primary-checkout-icon-bg': 'linear-gradient(to bottom, #CAEFFF33, #F3DFFF33)',
       '--gradient-primary-start': '#B722FF',
       '--gradient-primary-end': '#B722FF',
       '--secondary-color': '#B722FF',
@@ -13,10 +14,36 @@ const theme ={
       '--font-family-serif': 'Montserrat, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
     },
+    meta: {
+      title: 'BolderBook',
+      icon: '/assets/header.svg',
+      description: 'BolderBook is a platform that helps you grow your Facebook™ page with strategic promotion.',
+      keywords: ['Facebook™', 'Page', 'Promotion', 'Growth'],
+      robots: {
+        index: true,
+        follow: true,
+      },
+      og: {
+        title: 'BolderBook',
+        description: 'BolderBook is a platform that helps you grow your Facebook™ page with strategic promotion.',
+        image: '/assets/og.png',
+      },
+      twitter: {
+        title: 'BolderBook',
+        description: 'BolderBook is a platform that helps you grow your Facebook™ page with strategic promotion.',
+        image: '/assets/og.png',
+      },
+    },
     brand: {
+      name: 'BolderBook',
       nameFirst: 'bolderbook',
       nameSecond: '',
       headerImage: '/assets/header.svg',
+      checkoutLogo: '/assets/checkout-logo.svg',
+      checkout: {
+        summaryTitle: 'Premium Facebook™ Page Growth Package',
+        summaryText: 'Grow your Facebook™ page with authentic engagement that builds a loyal community around your content.'
+      },
       headerImageClass: '',
       headerIsShowName: true,
       platform: 'Facebook™',
