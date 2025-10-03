@@ -28,7 +28,7 @@ interface PricingSectionProps {
 
 export default function PricingSection({ brand }: PricingSectionProps) {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section  id="pricing" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

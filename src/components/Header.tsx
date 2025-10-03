@@ -70,7 +70,7 @@ export default function Header({ brand, style = 'default' }: HeaderProps) {
                   <Link href="/#pricing" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
                     Pricing
                   </Link>
-                  <Link href="/#contact" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
+                  <Link href="/#contact-us" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
                     Contact
                   </Link>
                 </nav>
