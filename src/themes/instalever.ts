@@ -255,8 +255,8 @@ const theme = {
         type: 'Account'
       },
       transparentPrice: {
-        platform: 'X™ Profile',
-        tool: 'XGrowLab'
+        platform: 'Instagram™ Profile',
+        tool: 'InstaLever'
       },
       faq: [
         {
@@ -265,13 +265,13 @@ const theme = {
         },
         
         {
-          question: "How Do You Increase My X™ Profile Visibility?",
+          question: "How Do You Increase My Instagram™ Profile Visibility?",
           answer: "We use strategic cross-platform marketing techniques including audience research, demographic analysis, and targeted promotion campaigns. Our team works through established networks of creators, partnership specialists, and advertising channels to introduce your profile to new audiences while respecting platform guidelines.",
         },
         
         {
           question: "Is This Service Platform Compliant?",
-          answer: "Yes, absolutely. All our marketing strategies are designed to respect X™'s terms of service and community guidelines. We use only platform-friendly methods and stay current with platform updates to ensure our external marketing approach remains compliant and effective.",
+          answer: "Yes, absolutely. All our marketing strategies are designed to respect Instagram™'s terms of service and community guidelines. We use only platform-friendly methods and stay current with platform updates to ensure our external marketing approach remains compliant and effective.",
         },
         
         {
