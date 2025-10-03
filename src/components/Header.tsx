@@ -27,18 +27,16 @@ export default function Header({ brand, style = 'default' }: HeaderProps) {
       case 'simple':
         return (
           <header className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: 'var(--color-border)' }}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-center items-center py-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center py-4">
                 <Link href={`/`} className="flex items-center space-x-2">
                   <img src={brand.headerImage} alt="header image" className={brand.headerImageClass || 'w-12 h-12'} />
-                </Link>
-                {brand.headerIsShowName && (
+                  {brand.headerIsShowName && (
                     <span className="text-2xl font-bold sans-serif-text">
                       <span className="gradient-text serif-headline">{brand.nameFirst}</span>
                       <span className="primary-textcolor">{brand.nameSecond}</span>
                     </span>
                   )}
-              </div>
+                </Link>
             </div>
           </header>
         );
