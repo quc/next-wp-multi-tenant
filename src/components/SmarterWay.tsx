@@ -59,7 +59,7 @@ export default function SmarterWay({ brand }: SmarterWayProps) {
             {/* Call-to-Action Button */}
             <div className="mb-6">
               <Link
-                href="/trial"
+                href="/checkout"
                 className="inline-block bg-white text-black px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90 transition-opacity sans-serif-text uppercase tracking-wide"
               >
                 START MY FREE 3-DAY TRIAL

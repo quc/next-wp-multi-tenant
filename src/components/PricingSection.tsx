@@ -117,7 +117,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
 
               {/* CTA Button */}
               <Link
-                href="/trial"
+                href="/checkout"
                 className={`block w-full text-center py-4 px-6 rounded-lg font-bold text-lg transition-opacity hover:opacity-90 sans-serif-text uppercase tracking-wide ${
                   pkg.isPopular
                     ? 'bg-white color-secondary-font  hover:bg-gray-100'

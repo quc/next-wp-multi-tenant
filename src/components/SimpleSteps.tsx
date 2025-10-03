@@ -94,7 +94,7 @@ export default function SimpleSteps({ brand }: SimpleStepsProps) {
         {/* Call-to-Action Button */}
         <div className="text-center">
           <Link
-            href="/trial"
+            href="/checkout"
             className="inline-block text-white px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90 transition-opacity sans-serif-text uppercase tracking-wide gradient-bg"
           >
             START MY FREE 3-DAY TRIAL

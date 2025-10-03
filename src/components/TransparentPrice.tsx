@@ -61,7 +61,7 @@ export default function TransparentPrice({ brand }: TransparentPriceProps) {
           {/* Call-to-Action Button */}
           <div className="mb-8">
             <Link
-              href="/trial"
+              href="/checkout"
               className="inline-block text-white px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90 transition-opacity sans-serif-text uppercase tracking-wide secondary-bg"
             >
               START MY FREE 3-DAY TRIAL

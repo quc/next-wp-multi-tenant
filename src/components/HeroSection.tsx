@@ -32,7 +32,7 @@ export default function HeroSection({
     { title: "Stream Started!", subtitle: "Alex • 5m ago" }
   ],
   buttonText = "START MY FREE 3-DAY TRIAL",
-  buttonHref = "/trial",
+  buttonHref = "/checkout",
   footerText = "Serving content creators since 2024",
   backgroundClass = "secondary-bg"
 }: HeroSectionProps) {

@@ -132,7 +132,7 @@ export default function LandingPage({ theme }: LandingPageProps) {
             {/* CTA Button */}
             <div className="pt-4">
               <Link
-                href="/trial"
+                href="/checkout"
                 className="inline-block gradient-bg text-white px-8 py-4 rounded-lg font-medium text-lg hover:opacity-90 transition-opacity sans-serif-text"
               >
                 START MY FREE 3-DAY TRIAL
