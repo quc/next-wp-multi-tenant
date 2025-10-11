@@ -1,7 +1,7 @@
 import CheckoutPage from '@/components/CheckoutPage';
 import { HeadstartWPRoute } from '@headstartwp/next/app';
 import { Metadata } from 'next';
-import themes, { resolveTheme } from '@/themes';
+import themes, { resolveTheme, ThemeKey } from '@/themes';
 
 export async function generateMetadata({
   params,
@@ -28,7 +28,7 @@ export async function generateMetadata({
 
 export default async function SitePage({ params }: HeadstartWPRoute) {
 	const resolvedParams = await params;
-	const theme = resolvedParams.site as 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
+	const theme = resolvedParams.site as ThemeKey;
 
 	return <CheckoutPage theme={theme} />;
 }

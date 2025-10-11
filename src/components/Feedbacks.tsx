@@ -1,118 +1,117 @@
 'use client';
 
-interface FeedbackCard {
-  subscribers: string;
-  videos: string;
-  description: string;
+import Verified from '@/icons/verified.svg';
+
+interface VideoFeedback {
+  video: string;
   thumbnail: string;
-  clientPhoto: string;
+  headline: string;
+  description: string;
+}
+
+interface TextFeedback {
+  name: string;
+  role: string;
+  company: string;
+  testimonial: string;
 }
 
 interface FeedbacksProps {
   brand: {
-    feedbacks: {
-      before: FeedbackCard;
-      after: FeedbackCard;
-    }[];
+    feedback: {
+      videoFeedbacks: VideoFeedback[];
+      textFeedbacks: TextFeedback[];
+    };
   };
 }
 
 export default function Feedbacks({ brand }: FeedbacksProps) {
-
-  const FeedbackCard = ({ type, data, index }: { type: 'before' | 'after', data: FeedbackCard, index: number }) => (
-    <div className="bg-white rounded-lg overflow-hidden border-none max-w-sm mx-auto">
-      {/* Header */}
-      <div 
-        className={`px-3 py-2 text-center font-bold text-s ${type === 'after' ? 'gradient-text' : ''}`}
-        
-      >
-        {type.toUpperCase()}
+  const VideoFeedbackCard = ({ feedback, index }: { feedback: VideoFeedback, index: number }) => (
+    <div className="bg-gray-50 rounded-lg p-4 max-w-lg mx-auto">
+      {/* Video Thumbnail */}
+      <div className="relative mb-4">
+        <div className="w-full h-64 rounded-md relative overflow-hidden">
+          <img src={feedback.thumbnail} alt="Video thumbnail" className="w-full h-full object-cover" />
+          {/* Play Button Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-12 h-12 bg-white bg-opacity-90 rounded-full flex items-center justify-center cursor-pointer hover:bg-opacity-100 transition-all">
+              <svg className="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          {/* Video Controls */}
+          <div className="absolute bottom-2 left-2 text-white text-xs bg-black bg-opacity-50 px-2 py-1 rounded">
+            0:00
+          </div>
+          <div className="absolute bottom-2 right-2 text-white text-xs bg-black bg-opacity-50 px-2 py-1 rounded">
+            8:24
+          </div>
+        </div>
       </div>
       
-      {/* Content */}
-      <div>
-        {/* Image Thumbnail */}
-        <div className="relative mb-3">
-          <div 
-            className="w-full h-16 rounded-b-md relative overflow-hidden"
-          >
-            <img src={data.thumbnail} alt="Thumbnail" className="w-full h-full object-cover" />
-          </div>
+      {/* Headline */}
+      <h3 className="font-bold text-lg mb-2 text-gray-900">
+        {feedback.headline}
+      </h3>
+      
+      {/* Description */}
+      <p className="text-sm text-gray-600 leading-relaxed">
+        {feedback.description}
+      </p>
+    </div>
+  );
+
+  const TextFeedbackCard = ({ feedback, index }: { feedback: TextFeedback, index: number }) => (
+    <div className="bg-gray-50 rounded-lg p-4 max-w-lg mx-auto">
+      {/* Name and Verification */}
+      <div className="flex items-center mb-2">
+        <h3 className="font-semibold text-gray-900 mr-2">{feedback.name}</h3>
+        <div className="w-4 h-4 rounded-full flex items-center justify-center">
+          <Verified />
         </div>
-
-        {/* Profile Section */}
-        <div className="flex items-start space-x-2 mb-2">
-          {/* Profile Picture */}
-            <div className="w-12 h-12 border-2 border-gray-300 rounded-full p-0.5 flex-shrink-0">
-              <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                <img src={data.clientPhoto} alt="Client Photo" className="w-full h-full object-cover rounded-full" />
-              </div>
-            </div>
-          
-          {/* Channel Info */}
-          <div className="flex-1 min-w-0 flex-col">
-            <div className="flex items-center space-x-1 mb-1 w-fit">
-              <h3 className="font-bold text-sm truncate primary-textcolor">
-                Lorem.Media{index + 1}00
-              </h3>
-              <div className="w-4 h-4 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-              </div>
-            </div>
-            <p className="text-xs text-gray-500 truncate mb-0.5 w-fit">@Lorem.Media{index + 1}00</p>
-            <p className="text-xs text-gray-500 w-fit ">
-              {data.subscribers} subscribers • {data.videos} videos
-            </p>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-xs text-gray-600 leading-relaxed line-clamp-3 text-left">
-          {data.description.replace('...more', '...')}<span className="font-bold">more</span>
-        </p>
-
-        {/* Link */}
-        <a 
-          href="#" 
-          className="text-xs text-blue-600 hover:text-blue-800 transition-colors underline truncate block w-fit mt-1"
-        >
-          loremipsumsamplelink.com
-        </a>
       </div>
+      
+      {/* Role and Company */}
+      <p className="text-sm text-gray-600 mb-3">
+        {feedback.role}, {feedback.company}
+      </p>
+      
+      {/* Testimonial */}
+      <p className="text-sm text-gray-700 leading-relaxed">
+        &ldquo;{feedback.testimonial}&rdquo;
+      </p>
     </div>
   );
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Section Title */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Customers Are Saying</h2>
+        </div>
 
-        {/* Before/After Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 px-4">
-          {/* Before Column */}
-          <div className="space-y-4">
-            {brand.feedbacks.map((feedback, index) => (
-              <FeedbackCard 
-                key={`before-${index}`}
-                type="before" 
-                data={feedback.before} 
-                index={index} 
-              />
-            ))}
-          </div>
+        {/* Video Feedbacks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {brand.feedback.videoFeedbacks.map((feedback, index) => (
+            <VideoFeedbackCard 
+              key={`video-${index}`}
+              feedback={feedback} 
+              index={index} 
+            />
+          ))}
+        </div>
 
-          {/* After Column */}
-          <div className="space-y-4">
-            {brand.feedbacks.map((feedback, index) => (
-              <FeedbackCard 
-                key={`after-${index}`}
-                type="after" 
-                data={feedback.after} 
-                index={index} 
-              />
-            ))}
-          </div>
+        {/* Text Feedbacks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {brand.feedback.textFeedbacks.map((feedback, index) => (
+            <TextFeedbackCard 
+              key={`text-${index}`}
+              feedback={feedback} 
+              index={index} 
+            />
+          ))}
         </div>
       </div>
     </section>

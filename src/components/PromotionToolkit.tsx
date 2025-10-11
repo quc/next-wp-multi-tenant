@@ -59,7 +59,7 @@ export default function PromotionToolkit({ brand }: PromotionToolkitProps) {
             <div className="relative max-w-sm mx-auto">
                {/* Background Rectangle - Behind the image */}
                <div 
-                 className="absolute w-[70%] h-[70%] gradient-bg rounded-2xl -translate-x-1/2 -translate-y-1/2"
+                 className="absolute w-[70%] h-[60%] gradient-bg rounded-2xl -translate-x-1/2 -translate-y-1/2"
                  style={{ 
                    left: 'calc(50% - 60px)',
                    top: 'calc(50% + 80px)'
@@ -68,7 +68,7 @@ export default function PromotionToolkit({ brand }: PromotionToolkitProps) {
               
               {/* Main Image Container */}
               <div className="relative rounded-lg overflow-hidden bg-gray-100 z-10">
-                <div className="aspect-[3/4] relative">
+                <div className="relative">
                   <img src={brand.promotionToolkit.image} alt="" className="w-full h-full object-cover" />
                 </div>
               </div>

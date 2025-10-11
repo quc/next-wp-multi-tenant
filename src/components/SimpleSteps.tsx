@@ -12,6 +12,8 @@ interface SimpleStepsProps {
       imgClass?: string;
       description: string;
       image: string;
+      video?: string;
+      videoPosition?: string;
       firstStep: string;
       firstStepDescription: string;
       secondStep: string;
@@ -43,7 +45,7 @@ export default function SimpleSteps({ brand }: SimpleStepsProps) {
   ];
 
   return (
-    <section id="how-it-works" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-16">
       <div className="max-w-6xl mx-auto text-center">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -56,30 +58,30 @@ export default function SimpleSteps({ brand }: SimpleStepsProps) {
         </div>
 
         {/* Main Content - Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12 px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
           {/* Left Column - Main Image */}
-          <div className="order-2 lg:order-1 h-full">
+          <div className="order-1 h-full min-h-[400px]">
             <div className="relative h-full">
               {/* Placeholder for the main image - you can replace this with the actual image */}
               <div 
                 className="w-full h-full rounded-lg relative overflow-hidden"
               >
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <img src={brand.simpleSteps.image} alt="simple steps" className={`w-full h-full object-cover ${brand.simpleSteps.imgClass}`} />
+                    {brand.simpleSteps.video ? <video src={brand.simpleSteps.video} className={`w-full h-full object-cover ${brand.simpleSteps.videoPosition || ''}`} autoPlay loop muted playsInline /> : <img src={brand.simpleSteps.image} alt="simple steps" className={`w-full h-full object-cover`} />}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Column - Steps */}
-          <div className="order-1 lg:order-2 space-y-8">
+          <div className="order-2 space-y-8">
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col items-start space-y-4">
                 {step.icon}
                 
                 {/* Content */}
                 <div className="flex flex-col items-start">
-                  <h3 className="text-lg font-bold mb-2 sans-serif-text primary-textcolor">
+                  <h3 className="text-lg font-bold mb-2 sans-serif-text primary-textcolor text-start">
                     {step.title}
                   </h3>
                   <p className="text-sm sans-serif-text leading-relaxed text-left secondary-textcolor">

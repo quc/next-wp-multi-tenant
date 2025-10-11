@@ -23,7 +23,7 @@ export default function ChannelMarketing({ brand }: ChannelMarketingProps) {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto text-center">
         {/* Main Heading */}
         <div className="text-center mb-12">
@@ -39,11 +39,7 @@ export default function ChannelMarketing({ brand }: ChannelMarketingProps) {
         <div className="relative max-w-4xl mx-auto px-4">
           {/* Background Rectangle - Behind the video */}
           <div 
-            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl gradient-bg"
-            style={{ 
-              width: 'calc(100% + 40px)',
-              height: '70%'
-            }}
+            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl gradient-bg w-full h-[70%]"
           ></div>
           
           <div className="relative rounded-lg overflow-hidden bg-black z-10">

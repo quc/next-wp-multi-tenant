@@ -40,7 +40,7 @@ export default function ContactUs({ brand }: ContactUsProps) {
   };
 
   return (
-    <section id="contact-us" className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--color-background)' }}>
+    <section id="contact-us" className="py-16" style={{ backgroundColor: 'var(--color-background)' }}>
       <div className="max-w-6xl mx-auto text-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start px-4">
           {/* Left Column - Contact Info */}

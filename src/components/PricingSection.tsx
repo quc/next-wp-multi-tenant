@@ -28,7 +28,7 @@ interface PricingSectionProps {
 
 export default function PricingSection({ brand }: PricingSectionProps) {
   return (
-    <section  id="pricing" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section  id="pricing" className="py-16">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -47,7 +47,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
               key={index}
               className={`relative rounded-2xl p-8 ${
                 pkg.isPopular
-                  ? 'secondary-bg text-white transform scale-105 shadow-2xl'
+                  ? 'secondary-bg text-white transform lg:scale-105 shadow-2xl'
                   : 'bg-white border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300'
               }`}
             >

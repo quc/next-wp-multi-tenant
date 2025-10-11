@@ -39,6 +39,7 @@ const theme = {
       nameFirst: 'instalever',
       nameSecond: '',
       headerImage: '/assets/header.svg',
+      footerLogo: '/assets/footer-logo.svg',
       headerImageClass: '',
       headerIsShowName: true,
       platform: 'Instagram™',
@@ -71,56 +72,84 @@ const theme = {
           `Creating content doesn't guarantee discovery`
         ]
       },
-      feedbacks: [
-        {
-          before: {
-            subscribers: "139K",
-            videos: "24",
-            clientPhoto: "/assets/card-pfp.png",
-            thumbnail: "/assets/card-bg.png",
-            description: "Suspendisse non urna quis eros commodo pellentesque ut egetdas metus. Suspendisse urna urna, tincidunt ut ultricies id...more"
+      feedback: {
+        videoFeedbacks: [
+          {
+            video: "assets/video-feedback-one.mp4",
+            thumbnail: "assets/video-feedback-one.png",
+            headline: "Amazing service! My growth skyrocketed.",
+            description: "Tempus leo eu aenean consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
           },
-          after: {
-            subscribers: "99M",
-            videos: "24",
-            clientPhoto: "/assets/card-pfp.png",
-            thumbnail: "/assets/card-bg.png",
-            description: "Suspendisse non urna quis eros commodo pellentesque ut egetdas metus. Suspendisse urna urna, tincidunt ut ultricies id...more"
-          }
-        },
-        {
-          before: {
-            subscribers: "89K",
-            videos: "18",
-            clientPhoto: "/assets/card-pfp.png",
-            thumbnail: "/assets/card-bg.png",
-            description: "Suspendisse non urna quis eros commodo pellentesque ut egetdas metus. Suspendisse urna urna, tincidunt ut ultricies id...more"
+          {
+            video: "assets/video-feedback-two.mp4",
+            thumbnail: "assets/video-feedback-two.png",
+            headline: "Easy to use and excellent results.",
+            description: "Tempus leo eu aenean consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
           },
-          after: {
-            subscribers: "45M",
-            videos: "18",
-            clientPhoto: "/assets/card-pfp.png",
-            thumbnail: "/assets/card-bg.png",
-            description: "Suspendisse non urna quis eros commodo pellentesque ut egetdas metus. Suspendisse urna urna, tincidunt ut ultricies id...more"
-          }
-        },
-        {
-          before: {
-            subscribers: "67K",
-            videos: "31", 
-            clientPhoto: "/assets/card-pfp.png",
-            thumbnail: "/assets/card-bg.png",
-            description: "Suspendisse non urna quis eros commodo pellentesque ut egetdas metus. Suspendisse urna urna, tincidunt ut ultricies id...more"
+          {
+            video: "assets/video-feedback-three.mp4",
+            thumbnail: "assets/video-feedback-three.png",
+            headline: "Highly recommend to anyone starting out.",
+            description: "Tempus leo eu aenean consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
           },
-          after: {
-            subscribers: "78M",
-            videos: "31",
-            clientPhoto: "/assets/card-pfp.png",
-            thumbnail: "/assets/card-bg.png",
-            description: "Suspendisse non urna quis eros commodo pellentesque ut egetdas metus. Suspendisse urna urna, tincidunt ut ultricies id...more"
+          {
+            video: "assets/video-feedback-four.mp4",
+            thumbnail: "assets/video-feedback-four.png",
+            headline: "Great support team, they really care.",
+            description: "Tempus leo eu aenean consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+          },
+          {
+            video: "assets/video-feedback-five.mp4",
+            thumbnail: "assets/video-feedback-five.png",
+            headline: "I saw results in just a few weeks",
+            description: "Tempus leo eu aenean consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+          },
+          {
+            video: "assets/video-feedback-six.mp4",
+            thumbnail: "assets/video-feedback-six.png",
+            headline: "Exactly what I needed for channel growth.",
+            description: "Tempus leo eu aenean consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
           }
-        }
-      ],
+        ],
+        textFeedbacks: [
+          {
+            name: "Nikolas Gibbons",
+            role: "Product Designer",
+            company: "Powersurge",
+            testimonial: "This service completely transformed my channel. Within weeks, I saw consistent growth in subscribers and engagement. The team's guidance was clear, supportive, and focused on results, making it easy for me to stay motivated."
+          },
+          {
+            name: "Ammar Foley",
+            role: "UX Designer",
+            company: "Goodwell",
+            testimonial: "I was skeptical at first, but this platform exceeded my expectations. The analytics are simple, actionable, and helped me create a growth strategy that actually works. I've seen steady improvement across all of my social channels."
+          },
+          {
+            name: "Marco Kelly",
+            role: "UI Designer",
+            company: "Railspeed",
+            testimonial: "Getting started was easy and stress-free. The step-by-step process and clear instructions made everything simple to follow. I saw visible results quickly, which gave me confidence and saved me hours of manual work every week."
+          },
+          {
+            name: "Florence Shaw",
+            role: "Web Designer",
+            company: "Quixotic",
+            testimonial: "The support team has been fantastic. Every question I had was answered quickly, and they always checked in to make sure I was on track. Their process gave me confidence and delivered real, measurable results for my channel."
+          },
+          {
+            name: "Zaid Schwartz",
+            role: "Founder",
+            company: "Wildcrafted",
+            testimonial: "What impressed me most was the transparency and communication. I always knew exactly what was happening and what to expect next. The results were consistent, and my audience growth has been both steady and sustainable."
+          },
+          {
+            name: "Owen Garcia",
+            role: "Founder",
+            company: "Wildcrafted",
+            testimonial: "This program was a true game changer for my brand. The strategy helped me connect with my audience and increase engagement. Sales have improved too, which makes this investment one of my best business decisions."
+          }
+        ]
+      },
       simpleSteps: {
         description: 'Instagram™ Account Visability',
         imgClass: '[transform:scaleX(-1)]',
@@ -179,7 +208,7 @@ const theme = {
         ],
         disclaimer: 'Cancel Anytime. Try our professional service risk-free. If you\'re not completely satisfied with our service quality, cancel within 3 days with zero charge. No complicated cancellation process - one simple step and you\'re done.'
       },
-      newAudience: {
+      everyDay: {
         description: 'Instagram™ Account',
         features: [
           {
@@ -206,7 +235,7 @@ const theme = {
       },
       promotionToolkit: {
         type: 'Account',
-        image: '/assets/img-three.png',
+        image: '/assets/iPhone.png',
         tool: 'InstaLever',
         leftFeatures: [
           {
@@ -247,11 +276,12 @@ const theme = {
       },
       whatHappens: {
         benefits: [
-          "Increased visibility for your content",
+          "Better engagement with people who actually care about your content",
           "Stronger positioning for future brand deals, sponsorships, and partnerships",
-          "Expanded opportunities to promote your products or services",
           "Increased authority and presence within your niche or industry",
         ],
+        cloloredText: 'Every Day',
+        title: 'More Eyeballs On Your Instagram Posts and Reels',
         type: 'Account'
       },
       transparentPrice: {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Ubuntu } from 'next/font/google';
-import { resolveTheme } from '@/themes';
+import { resolveTheme, ThemeKey } from '@/themes';
 import Trophy  from "@/icons/trophy.svg";
 import Star  from "@/icons/star.svg";
 import Visa  from "@/icons/visa.svg";
@@ -14,7 +14,7 @@ import Discover  from "@/icons/discover.svg";
 import AmericanExpress  from "@/icons/amex.svg";
 
 interface CheckoutPageProps {
-  theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
+  theme: ThemeKey;
 }
 
 const ubuntu = Ubuntu({
@@ -41,7 +41,7 @@ export default function CheckoutPage({ theme }: CheckoutPageProps) {
       <Header brand={brand} style="simple" />
 
       {/* Main Content */}
-      <main className="py-12">
+      <div className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             
@@ -292,31 +292,6 @@ export default function CheckoutPage({ theme }: CheckoutPageProps) {
                       />
                     </div>
                   </div>
-
-                  <div className="flex items-start space-x-3">
-                    <input
-                      type="checkbox"
-                      className="mt-1"
-                    />
-                    <label className="text-sm text-gray-600">
-                      I have read and agree to the website <Link href="/terms" className="underline">terms and conditions</Link>
-                    </label>
-                  </div>
-
-                  {/* Confirm Order Button */}
-                  <button className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors mt-6 mb-4">
-                    Start Growing Now
-                  </button>
-
-                  {/* Money-back Guarantee */}
-                  <div className="flex-col items-start space-x-3">
-                      <p className="font-semibold text-sm mb-1 text-gray-800">
-                       💰 30-Day Results-Driven Money-Back Guarantee
-                      </p>
-                      <p className="text-sm text-gray-600 ml-0">
-                        If you don&apos;t see any positive results, just send us a message within 30 days and we will give you a full refund.
-                      </p>
-                  </div>
                 </div>
               </section>
             </div>
@@ -398,9 +373,43 @@ export default function CheckoutPage({ theme }: CheckoutPageProps) {
                 </div>
               </div>
             </div>
+
+            <div className="space-y-8">
+
+              {/* Payment Information */}
+              <section>
+                <div className="space-y-4">
+
+                  <div className="flex items-start space-x-3">
+                    <input
+                      type="checkbox"
+                      className="mt-1"
+                    />
+                    <label className="text-sm text-gray-600">
+                      I have read and agree to the website <Link href="/terms" className="underline">terms and conditions</Link>
+                    </label>
+                  </div>
+
+                  {/* Confirm Order Button */}
+                  <button className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors mt-6 mb-4">
+                    Start Growing Now
+                  </button>
+
+                  {/* Money-back Guarantee */}
+                  <div className="flex-col items-start space-x-3">
+                      <p className="font-semibold text-sm mb-1 text-gray-800">
+                       💰 30-Day Results-Driven Money-Back Guarantee
+                      </p>
+                      <p className="text-sm text-gray-600 ml-0">
+                        If you don&apos;t see any positive results, just send us a message within 30 days and we will give you a full refund.
+                      </p>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
 
       {/* Footer */}
       <Footer brand={brand} />

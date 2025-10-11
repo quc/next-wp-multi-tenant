@@ -1,9 +1,9 @@
-import { resolveTheme } from "@/themes";
+import { resolveTheme, ThemeKey } from "@/themes";
 import Footer from "./Footer";
 import Header from "./Header";
 
 interface LandingPageProps {
-    theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
+    theme: ThemeKey;
   }
   
   export default function PrivacyPage({ theme }: LandingPageProps) {

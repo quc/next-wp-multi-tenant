@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface HeaderProps {
   brand: {
@@ -17,6 +17,22 @@ interface HeaderProps {
 
 export default function Header({ brand, style = 'default' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 870);
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Add event listener
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,54 +74,60 @@ export default function Header({ brand, style = 'default' }: HeaderProps) {
                 </Link>
       
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex space-x-8">
-                  <Link href={`/`} className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
-                    Home
-                  </Link>
-                  <Link href="/#how-it-works" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
-                    How it Works
-                  </Link>
-                  <Link href="/#pricing" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
-                    Pricing
-                  </Link>
-                  <Link href="/#contact-us" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
-                    Contact
-                  </Link>
-                </nav>
+                {isDesktop && (
+                  <nav className="flex space-x-8">
+                    <Link href={`/`} className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
+                      Home
+                    </Link>
+                    <Link href="/#how-it-works" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
+                      How it Works
+                    </Link>
+                    <Link href="/#pricing" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
+                      Pricing
+                    </Link>
+                    <Link href="/#contact-us" className="sans-serif-text hover:opacity-75 transition-opacity primary-textcolor">
+                      Contact
+                    </Link>
+                  </nav>
+                )}
       
                 {/* Desktop CTA Button */}
-                <Link
-                  href="/checkout"
-                  className="hidden md:block gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity sans-serif-text"
-                >
-                  START MY FREE 3-DAY TRIAL
-                </Link>
+                {isDesktop && (
+                  <Link
+                    href="/checkout"
+                    className="gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity sans-serif-text"
+                  >
+                    START MY FREE 3-DAY TRIAL
+                  </Link>
+                )}
       
                 {/* Mobile Menu Button */}
-                <button
-                  onClick={toggleMenu}
-                  className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-                  aria-label="Toggle menu"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    style={{ color: 'var(--color-text-primary)' }}
+                {!isDesktop && (
+                  <button
+                    onClick={toggleMenu}
+                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    aria-label="Toggle menu"
                   >
-                    {isMenuOpen ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    )}
-                  </svg>
-                </button>
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      style={{ color: 'var(--color-text-primary)' }}
+                    >
+                      {isMenuOpen ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                      )}
+                    </svg>
+                  </button>
+                )}
               </div>
       
               {/* Mobile Menu */}
-              {isMenuOpen && (
-                <div className="md:hidden border-t" style={{ borderColor: 'var(--color-border)' }}>
+              {isMenuOpen && !isDesktop && (
+                <div className="border-t" style={{ borderColor: 'var(--color-border)' }}>
                   <nav className="py-4 space-y-4">
                     <Link 
                       href={`/`} 

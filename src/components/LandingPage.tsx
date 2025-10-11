@@ -8,7 +8,7 @@ import ChannelMarketing from "./ChannelMarketing";
 import WhyGrowing from "./WhyGrowing";
 import Feedbacks from "./Feedbacks";
 import SimpleSteps from "./SimpleSteps";
-import NewAudience from "./NewAudience";
+import EveryDay from "./EveryDay";
 import PromotionToolkit from "./PromotionToolkit";
 import WhatHappens from "./WhatHappens";
 import TransparentPrice from "./TransparentPrice";
@@ -18,10 +18,10 @@ import ContactUs from "./ContactUs";
 import ImageWithPhone from "./ImageWithPhone";
 import PricingSection from "./PricingSection";
 import { Ubuntu } from 'next/font/google';
-import { resolveTheme } from '@/themes';
+import { resolveTheme, ThemeKey } from '@/themes';
 
 interface LandingPageProps {
-  theme: 'tubemagnet' | 'instalever' | 'xgrowlab' | 'streameredge' | 'bolderbook' | 'omgtok' | 'earforge';
+  theme: ThemeKey;
 }
 
 
@@ -95,10 +95,11 @@ export default function LandingPage({ theme }: LandingPageProps) {
     <div className={`${ubuntu.variable} min-h-screen`} style={{ backgroundColor: 'var(--color-background)', ...cssVars }}>
       
       <Header brand={brand} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className=" py-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left Content */}
           <div className="space-y-8">
             {/* Headline */}
@@ -149,7 +150,7 @@ export default function LandingPage({ theme }: LandingPageProps) {
             />
           </div>
         </div>
-      </main>
+      </div>
 
       {/* Trusted by Section */}
       <TrustedBySection />
@@ -167,7 +168,7 @@ export default function LandingPage({ theme }: LandingPageProps) {
       <Feedbacks brand={brand} />
 
       {/* New Audience Section */}
-      <NewAudience brand={brand} />
+      <EveryDay brand={brand} />
 
       {/* Promotion Toolkit Section */}
       <PromotionToolkit brand={brand}/>
@@ -252,6 +253,7 @@ export default function LandingPage({ theme }: LandingPageProps) {
         )}
       </div>
     </main> */}
+    </div>
 
       {/* Footer */}
       <Footer brand={brand} />
