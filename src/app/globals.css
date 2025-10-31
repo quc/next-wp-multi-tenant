@@ -33,6 +33,7 @@
     --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
+    --header-glass-color: rgb(76 136 234);
   }
 
   .dark {
@@ -132,6 +133,22 @@
     background: var(--secondary-color);
   }
 
+  .three-color-gradient {
+    background: var(--three-color-gradient);
+  }
+
+  .checkmark-icon path {
+    fill: currentColor;
+  }
+
+  .checkmark-white {
+    color: white;
+  }
+
+  .checkmark-secondary {
+    color: var(--secondary-color);
+  }
+
   .primary-textcolor {
     color: var(--color-text-primary);
   }
@@ -160,6 +177,16 @@
   }
   .sans-serif-text {
     font-family: var(--font-family-sans-serif);
+  }
+
+  /* Marquee left animation for BeforeAfter carousel */
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee-left {
+    animation: marquee-left 30s linear infinite;
   }
 
 }

@@ -5,6 +5,7 @@ const theme ={
       '--gradient-primary-start': '#F9BF4B',
       '--gradient-primary-end': '#F9BF4B',
       '--secondary-color': '#F9BF4B',
+      '--three-color-gradient': '#F9BF4B',
       '--color-text-primary': '#333333',
       '--color-text-secondary': '#555555',
       '--color-background': '#FFFFFF',
@@ -13,6 +14,7 @@ const theme ={
       '--color-border': '#E0E0E0',
       '--font-family-serif': 'var(--font-ubuntu), serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
+      '--header-glass-color': 'rgb(252 204 108)',
     },
     meta: {
       title: 'EarForge',
@@ -43,11 +45,18 @@ const theme ={
       headerImageClass: 'w-[144px] h-[31px]',
       headerIsShowName: false,
       platform: 'Spotify™',
+      platformName: 'Spotify',
+      platformTarget: 'Listeners',
+      platformDescription: 'Our underground network of 20,000+ niche-specific influencers will flood your channel with targeted subscribers starting in 24 hours.',
       platformType: 'Profile',
       description: 'Profile Visibility',
       image: '/assets/chart.gif',
       phoneImage: '/assets/phone.gif',
       phoneImageAlt: 'phone image',
+      smarterWayReview: '/assets/smarter-way-review.png',
+      smarterWayReviewText: '“We hit 6,500 new Spotify followers in our first month, and it made a massive difference. Our tracks started landing on playlists and attracting organic listeners from all over the world.”',
+      reviewRating:'4.8/5',
+      reviewsCount:'25,123 reviews',
       features: [
         'Strategic personalized profile promotion',
         'Respect platform compliance guidelines',
@@ -58,12 +67,12 @@ const theme ={
         { name: 'Bill', time: '2m ago' },
         { name: 'Andrew', time: '3m ago' }
       ],
-      video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      video: 'https://www.youtube.com/watch?v=h_yQswsXwhY',
       checkout: {
         summaryTitle: 'Premium Spotify™ Profile Growth Package',
         summaryText: 'Amplify your Spotify™ profile with strategic promotion that attracts music lovers and builds your fanbase.'
       },
-      videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
+      videoThumbnail: 'https://i.ytimg.com/vi/h_yQswsXwhY/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLCiuHZSty4JrTNrxjUOgoUVRPWSVg',
       whyGrowing: {
         challenges: [
           `The algorithm usually favors big content creators, leaving many high-quality profiles underexposed`,
@@ -150,10 +159,26 @@ const theme ={
           }
         ]
       },
+      beforeAfter: [
+        {
+          before: { title: 'Artist Result 1', image: '/earforge/before-after-one.png' },
+          after: { title: 'Artist Result 2', image: '/earforge/before-after-two.png' }
+        },
+        {
+          before: { title: 'Artist Result 3', image: '/earforge/before-after-three.png' },
+          after: { title: 'Artist Result 4', image: '/earforge/before-after-four.png' }
+        },
+        {
+          before: { title: 'Artist Result 5', image: '/earforge/before-after-five.png' },
+          after: { title: 'Artist Result 6', image: '/earforge/before-after-six.png' }
+        },
+      ],
       simpleSteps: {
         description: 'Spotify™ Profile Visibility',
         imgClass: '[transform:scaleX(-1)]',
         image: '/assets/img-two.png',
+        video: '/assets/simple-steps-video.mp4',
+        videoPosition: 'object-[40%_50%]',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target audience demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for Spotify™.',
         secondStep: '2. Share Your Content Pillars',
@@ -276,9 +301,22 @@ const theme ={
       },
       whatHappens: {
         benefits: [
-          "Better engagement with people who actually care about your content",
-          "Stronger positioning for future brand deals, sponsorships, and partnerships",
-          "Increased authority and presence within your niche or industry",
+          {
+            title: 'Monetization opportunities',
+            text: 'Brand deals, sponsorships, and partnership offers with $5K-$50K earning potential'
+          },
+          {
+            title: 'Direct income growth',
+            text: 'Increased views translate directly to higher YouTube ad revenue and better monetization rates'
+          },
+          {
+            title: 'Financial freedom',
+            text: 'Quit your day job and go all-in on doing what you love - creating YouTube videos.'
+          },
+          {
+            title: 'Authority status',
+            text: 'Become the recognized expert in your niche that people like, trust, and follow'
+          }
         ],
         cloloredText: 'Every Day',
         title: 'More Listeners Discovering Your Spotify Tracks or Episodes',

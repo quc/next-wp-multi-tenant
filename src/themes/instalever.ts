@@ -5,6 +5,7 @@ const theme = {
       '--gradient-primary-start': '#FFE13F',
       '--gradient-primary-end': '#FA709A',
       '--secondary-color': '#FA709A',
+      '--three-color-gradient': 'linear-gradient(to bottom, #FFE13F, #FA709A)',
       '--color-text-primary': '#333333',
       '--color-text-secondary': '#555555',
       '--color-background': '#FFFFFF',
@@ -13,6 +14,7 @@ const theme = {
       '--color-border': '#E0E0E0',
       '--font-family-serif': 'Afterglow, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
+      '--header-glass-color': 'rgb(253 195 151)',
     },
     meta: {
         title: 'Instalever',
@@ -43,11 +45,18 @@ const theme = {
       headerImageClass: '',
       headerIsShowName: true,
       platform: 'Instagram™',
+      platformName: 'Instagram',
+      platformTarget: 'Followers',      
+      platformDescription: 'Our underground network of 20,000+ niche-specific influencers will flood your channel with targeted subscribers starting in 24 hours.',
       platformType: 'Account',
       description: 'Profile Visibility',
       image: '/assets/chart.gif',
       phoneImage: '/assets/phone.gif',
       phoneImageAlt: 'phone image',
+      smarterWayReview: '/assets/smarter-way-review.png',
+      smarterWayReviewText: '“We picked up 6,000 new Instagram followers in just 30 days, and it completely reignited our page. Engagement shot up, and every new post started reaching people who genuinely cared about our content.”',
+      reviewRating:'4.8/5',
+      reviewsCount:'25,123 reviews',
       features: [
         'Strategic personalized account promotion',
         'Respect platform compliance guidelines',
@@ -58,12 +67,12 @@ const theme = {
         { name: 'Bill', time: '2m ago' },
         { name: 'Andrew', time: '3m ago' }
       ],
-      video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      video: 'https://www.youtube.com/watch?v=h_yQswsXwhY',
       checkout: {
         summaryTitle: 'Premium Instagram™ Account Growth Package',
         summaryText: 'Boost your Instagram™ account with authentic followers and engagement that drives real business results.'
       },
-      videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
+      videoThumbnail: 'https://i.ytimg.com/vi/h_yQswsXwhY/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLCiuHZSty4JrTNrxjUOgoUVRPWSVg',
       whyGrowing: {
         challenges: [
           `The algorithm usually favors big creators, leaving many high-quality profiles underexposed`,
@@ -150,10 +159,26 @@ const theme = {
           }
         ]
       },
+      beforeAfter: [
+        {
+          before: { title: 'Creator Result 1', image: '/instalever/before-after-one.png' },
+          after: { title: 'Creator Result 2', image: '/instalever/before-after-two.png' }
+        },
+        {
+          before: { title: 'Creator Result 3', image: '/instalever/before-after-three.png' },
+          after: { title: 'Creator Result 4', image: '/instalever/before-after-four.png' }
+        },
+        {
+          before: { title: 'Creator Result 5', image: '/instalever/before-after-five.png' },
+          after: { title: 'Creator Result 6', image: '/instalever/before-after-six.png' }
+        },
+      ],
       simpleSteps: {
         description: 'Instagram™ Account Visability',
         imgClass: '[transform:scaleX(-1)]',
         image: '/assets/img-two.png',
+        video: '/assets/simple-steps-video.mp4',
+        videoPosition: 'object-[80%_50%]',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target viewer demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for Instagram™.',
         secondStep: '2. Create a Compelling Video',
@@ -276,9 +301,22 @@ const theme = {
       },
       whatHappens: {
         benefits: [
-          "Better engagement with people who actually care about your content",
-          "Stronger positioning for future brand deals, sponsorships, and partnerships",
-          "Increased authority and presence within your niche or industry",
+          {
+            title: 'Monetization opportunities',
+            text: 'Brand deals, sponsorships, and partnership offers with $5K-$50K earning potential'
+          },
+          {
+            title: 'Direct income growth',
+            text: 'Increased views translate directly to higher YouTube ad revenue and better monetization rates'
+          },
+          {
+            title: 'Financial freedom',
+            text: 'Quit your day job and go all-in on doing what you love - creating YouTube videos.'
+          },
+          {
+            title: 'Authority status',
+            text: 'Become the recognized expert in your niche that people like, trust, and follow'
+          }
         ],
         cloloredText: 'Every Day',
         title: 'More Eyeballs On Your Instagram Posts and Reels',

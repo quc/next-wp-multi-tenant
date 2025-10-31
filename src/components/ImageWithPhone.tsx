@@ -16,10 +16,12 @@ interface ImageWithPhoneProps {
   className?: string;
   phoneImage?: string;
   phoneImageAlt?: string;
+  smarterWayReview?: string;
+  smarterWayReviewText?: string;
 }
 
 export default function ImageWithPhone(brand: ImageWithPhoneProps) {
-  const { image, imageAlt, phonePosition, className, phoneImage, phoneImageAlt } = brand;
+  const { image, imageAlt, phonePosition, className, phoneImage, phoneImageAlt, smarterWayReview, smarterWayReviewText } = brand;
   const getPhonePositionClasses = () => {
     switch (phonePosition) {
       case 'smarter-way':
@@ -41,12 +43,25 @@ export default function ImageWithPhone(brand: ImageWithPhoneProps) {
     }
   };
 
+
   return (
     <div className={`relative w-full h-[457px] lg:h-full flex items-center ${className}`}>
       <div className="overflow-hidden z-10 h-full lg:h-[110%] min-w-full">
         <div className={`h-full relative ${getImageClasses()}`}>
           <img src={image} alt={imageAlt} className="w-full h-full object-cover scale-[0.7] rounded-[2.5rem]" />
         </div>
+        {smarterWayReview && smarterWayReviewText&& (
+          <div className="review-container">
+            <div className="review flex flex-col w-[68%] gap-y-4">
+              <p>{smarterWayReviewText}</p>
+              <div className="review-image flex gap-x-8 items-center">
+                <div className="h-[4px] w-[80px] rounded-full gradient-bg">
+                </div>
+                <img src={smarterWayReview} alt="Smarter Way Review" className="object-contain" />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className={`relative ${getPhonePositionClasses()} z-20 hidden`}>

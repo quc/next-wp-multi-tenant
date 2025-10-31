@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Promo from "./Promo";
 
 interface HeaderProps {
   brand: {
@@ -24,13 +25,8 @@ export default function Header({ brand, style = 'default' }: HeaderProps) {
       setIsDesktop(window.innerWidth >= 870);
     };
 
-    // Check on mount
     checkScreenSize();
-
-    // Add event listener
     window.addEventListener('resize', checkScreenSize);
-
-    // Cleanup
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
@@ -43,6 +39,7 @@ export default function Header({ brand, style = 'default' }: HeaderProps) {
       case 'simple':
         return (
           <header className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: 'var(--color-border)' }}>
+            <Promo />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center py-4">
                 <Link href={`/`} className="flex items-center space-x-2">
                   <img src={brand.headerImage} alt="header image" className={brand.headerImageClass || 'w-12 h-12'} />
@@ -59,6 +56,7 @@ export default function Header({ brand, style = 'default' }: HeaderProps) {
       default:
         return (
           <header className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: 'var(--color-border)' }}>
+            <Promo />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center py-4">
                 {/* Logo */}

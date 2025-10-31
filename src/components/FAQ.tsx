@@ -65,8 +65,8 @@ export default function FAQ({ brand }: FAQProps) {
               {/* Answer */}
               {openItems.includes(index) && (
                 <div className="px-6 pb-4">
-                  <div className="pt-2 border-t border-gray-200">
-                    <p className="text-base sans-serif-text leading-relaxed secondary-textcolor">
+                  <div className="pt-2 ">
+                    <p className="text-base sans-serif-text leading-relaxed secondary-textcolor text-start">
                       {item.answer}
                     </p>
                   </div>

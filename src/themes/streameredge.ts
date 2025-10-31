@@ -5,6 +5,7 @@ const theme ={
       '--gradient-primary-start': '#144579',
       '--gradient-primary-end': '#144579',
       '--secondary-color': '#144579',
+      '--three-color-gradient': '#144579',
       '--color-text-primary': '#333333',
       '--color-text-secondary': '#555555',
       '--color-background': '#FFFFFF',
@@ -13,6 +14,7 @@ const theme ={
       '--color-border': '#E0E0E0',
       '--font-family-serif': 'var(--font-ubuntu), serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
+      '--header-glass-color': 'rgb(91 121 153)',
     },
     meta: {
       title: 'StreamerEdge',
@@ -43,11 +45,18 @@ const theme ={
       headerImageClass: 'w-[256px] h-[30px]',
       headerIsShowName: false,
       platform: 'Twitch™',
+      platformName: 'Twitch',
+      platformTarget: 'Followers',
+      platformDescription: 'Our underground network of 20,000+ niche-specific influencers will flood your channel with targeted subscribers starting in 24 hours.',
       platformType: 'Channel',
       description: 'Channel Visibility',
       image: '/assets/chart.gif',
       phoneImage: '/assets/phone.gif',
       phoneImageAlt: 'phone image',
+      smarterWayReview: '/assets/smarter-way-review.png',
+      smarterWayReviewText: '“After gaining 5,300 new Twitch followers in our first month, everything shifted. Streams that used to feel quiet suddenly had active chats, and new viewers kept showing up every time we went live.”',
+      reviewRating:'4.8/5',
+      reviewsCount:'25,123 reviews',
       features: [
         'Strategic personalized channel promotion',
         'Respect platform compliance guidelines',
@@ -58,12 +67,12 @@ const theme ={
         { name: 'Bill', time: '2m ago' },
         { name: 'Andrew', time: '3m ago' }
       ],
-      video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      video: 'https://www.youtube.com/watch?v=h_yQswsXwhY',
       checkout: {
         summaryTitle: 'Premium Twitch™ Channel Growth Package',
         summaryText: 'Elevate your Twitch™ channel with strategic promotion that brings dedicated viewers who love your content.'
       },
-      videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
+      videoThumbnail: 'https://i.ytimg.com/vi/h_yQswsXwhY/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLCiuHZSty4JrTNrxjUOgoUVRPWSVg',
       whyGrowing: {
         challenges: [
           `The algorithm usually favors big streamers, leaving many high-quality channels underexposed`,
@@ -150,10 +159,26 @@ const theme ={
           }
         ]
       },
+      beforeAfter: [
+        {
+          before: { title: 'Streamer Result 1', image: '/streameredge/before-after-one.png' },
+          after: { title: 'Streamer Result 2', image: '/streameredge/before-after-two.png' }
+        },
+        {
+          before: { title: 'Streamer Result 3', image: '/streameredge/before-after-three.png' },
+          after: { title: 'Streamer Result 4', image: '/streameredge/before-after-four.png' }
+        },
+        {
+          before: { title: 'Streamer Result 5', image: '/streameredge/before-after-five.png' },
+          after: { title: 'Streamer Result 6', image: '/streameredge/before-after-six.png' }
+        },
+      ],
       simpleSteps: {
         description: 'Twitch™ Channel Visibility',
         imgClass: '[transform:scaleX(-1)]',
         image: '/assets/img-two.png',
+        video: '/assets/simple-steps-video.mp4',
+        videoPosition: 'object-[50%_50%]',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target audience demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for Twitch™.',
         secondStep: '2. Share Your Content Pillars',
@@ -276,9 +301,22 @@ const theme ={
       },
       whatHappens: {
         benefits: [
-          "Better engagement with people who actually care about your content",
-          "Stronger positioning for future brand deals, sponsorships, and partnerships",
-          "Increased authority and presence within your niche or industry",
+          {
+            title: 'Monetization opportunities',
+            text: 'Brand deals, sponsorships, and partnership offers with $5K-$50K earning potential'
+          },
+          {
+            title: 'Direct income growth',
+            text: 'Increased views translate directly to higher YouTube ad revenue and better monetization rates'
+          },
+          {
+            title: 'Financial freedom',
+            text: 'Quit your day job and go all-in on doing what you love - creating YouTube videos.'
+          },
+          {
+            title: 'Authority status',
+            text: 'Become the recognized expert in your niche that people like, trust, and follow'
+          }
         ],
         cloloredText: 'Your Channel',
         title: 'What Happens When You Grow',

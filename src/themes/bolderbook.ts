@@ -5,6 +5,7 @@ const theme ={
       '--gradient-primary-start': '#B722FF',
       '--gradient-primary-end': '#B722FF',
       '--secondary-color': '#B722FF',
+      '--three-color-gradient': '#B722FF',
       '--color-text-primary': '#333333',
       '--color-text-secondary': '#555555',
       '--color-background': '#FFFFFF',
@@ -13,6 +14,7 @@ const theme ={
       '--color-border': '#E0E0E0',
       '--font-family-serif': 'Montserrat, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
+      '--header-glass-color': 'rgb(202 98 252)',
     },
     meta: {
       title: 'BolderBook',
@@ -48,11 +50,18 @@ const theme ={
       headerImageClass: '',
       headerIsShowName: true,
       platform: 'Facebook™',
+      platformName: 'Facebook',
+      platformTarget: 'Page Likes & Followers',
+      platformDescription: 'Our underground network of 20,000+ niche-specific influencers will flood your channel with targeted subscribers starting in 24 hours.',
       platformType: 'Pages',
       description: 'Page Visibility',
       image: '/assets/chart.gif',
       phoneImage: '/assets/phone.gif',
       phoneImageAlt: 'phone image',
+      smarterWayReview: '/assets/smarter-way-review.png',
+      smarterWayReviewText: '“We added over 4,500 new followers to our Facebook page in the first month, and it gave our content a whole new level of visibility. Posts that used to get a handful of likes were suddenly reaching thousands.”',
+      reviewRating:'4.8/5',
+      reviewsCount:'25,123 reviews',
       features: [
         'Strategic personalized account promotion',
         'Respect platform compliance guidelines',
@@ -63,8 +72,8 @@ const theme ={
         { name: 'Bill', time: '2m ago' },
         { name: 'Andrew', time: '3m ago' }
       ],
-      video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
-      videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
+      video: 'https://www.youtube.com/watch?v=h_yQswsXwhY',
+      videoThumbnail: 'https://i.ytimg.com/vi/h_yQswsXwhY/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLCiuHZSty4JrTNrxjUOgoUVRPWSVg',
       whyGrowing: {
         challenges: [
           `The algorithm usually favors big creators, leaving many high-quality pages underexposed`,
@@ -151,10 +160,26 @@ const theme ={
           }
         ]
       },
+      beforeAfter: [
+        {
+          before: { title: 'Page Result 1', image: '/bolderbook/before-after-one.png' },
+          after: { title: 'Page Result 2', image: '/bolderbook/before-after-two.png' }
+        },
+        {
+          before: { title: 'Page Result 3', image: '/bolderbook/before-after-three.png' },
+          after: { title: 'Page Result 4', image: '/bolderbook/before-after-four.png' }
+        },
+        {
+          before: { title: 'Page Result 5', image: '/bolderbook/before-after-five.png' },
+          after: { title: 'Page Result 6', image: '/bolderbook/before-after-six.png' }
+        },
+      ],
       simpleSteps: {
         description: 'Facebook™ Page Visibility',
         imgClass: '[transform:scaleX(-1)]',
         image: '/assets/img-two.png',
+        video: '/assets/simple-steps-video.mp4',
+        videoPosition: 'object-[50%_50%]',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target audience demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for Facebook™.',
         secondStep: '2. Share Your Content Pillars',
@@ -277,10 +302,22 @@ const theme ={
       },
       whatHappens: {
         benefits: [
-          "Better engagement with people who actually care about your content",
-          "Stronger positioning for future brand deals, sponsorships, and partnerships",
-          "Increased authority and presence within your niche or industry",
-          "Increased authority and presence within your niche or industry"
+          {
+            title: 'Monetization opportunities',
+            text: 'Brand deals, sponsorships, and partnership offers with $5K-$50K earning potential'
+          },
+          {
+            title: 'Direct income growth',
+            text: 'Increased views translate directly to higher YouTube ad revenue and better monetization rates'
+          },
+          {
+            title: 'Financial freedom',
+            text: 'Quit your day job and go all-in on doing what you love - creating YouTube videos.'
+          },
+          {
+            title: 'Authority status',
+            text: 'Become the recognized expert in your niche that people like, trust, and follow'
+          }
         ],
         cloloredText: 'Every Day',
         title: 'More Eyeballs On Your Facebook Content',

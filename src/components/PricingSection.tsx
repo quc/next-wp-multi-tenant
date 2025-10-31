@@ -6,7 +6,7 @@ import CheckMark from '@/icons/check-mark.svg';
 interface PricingSectionProps {
   brand: {
     nameFirst: string;
-    platform: string;
+    platformName: string;
     platformType: string;
     pricing: {
       title: string;
@@ -33,7 +33,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold serif-headline primary-textcolor mb-4">
-            Choose Your {brand.platform} <span className="gradient-text">{brand.pricing.title}</span>
+            Choose Your {brand.platformName} {brand.pricing.title}
           </h2>
           <p className="text-lg sans-serif-text secondary-textcolor">
             {brand.pricing.subtitle}
@@ -47,7 +47,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
               key={index}
               className={`relative rounded-2xl p-8 ${
                 pkg.isPopular
-                  ? 'secondary-bg text-white transform lg:scale-105 shadow-2xl'
+                  ? 'three-color-gradient text-white transform lg:scale-105 shadow-2xl'
                   : 'bg-white border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300'
               }`}
             >
@@ -94,10 +94,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
                   <li key={featureIndex} className="flex items-start">
                      <div className="mr-3 mt-0.5">
                        <CheckMark 
-                         className="w-5 h-5" 
-                         style={{ 
-                           color: pkg.isPopular ? 'white' : 'var(--secondary-color)' 
-                         }}
+                         className={`w-5 h-5 checkmark-icon ${pkg.isPopular ? 'checkmark-white' : 'checkmark-secondary'}`}
                        />
                      </div>
                     <span className={`text-sm ${

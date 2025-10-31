@@ -5,6 +5,7 @@ const theme = {
       '--gradient-primary-start': '#0060FB',
       '--gradient-primary-end': '#0060FB',
       '--secondary-color': '#0060FB',
+      '--three-color-gradient': 'linear-gradient(180deg, #1A71FF 0%, #0060FB 50%, #0042AD 100%)',
       '--color-text-primary': '#333333',
       '--color-text-secondary': '#555555',
       '--color-background': '#FFFFFF',
@@ -13,6 +14,7 @@ const theme = {
       '--color-border': '#E0E0E0',
       '--font-family-serif': 'Open Sans, serif',
       '--font-family-sans-serif': 'Inter, sans-serif',
+      '--header-glass-color': 'rgb(76 136 234)',
     },
     meta: {
         title: 'TubeMagnet',
@@ -43,11 +45,18 @@ const theme = {
       headerImageClass: '',
       headerIsShowName: true,
       platform: 'YouTube™',
+      platformName: 'YouTube',
+      platformTarget: 'Subscribers',
+      platformDescription: 'Our underground network of 20,000+ niche-specific influencers will flood your channel with targeted subscribers starting in 24 hours.',
       platformType: 'Channel',
       image: '/assets/chart.gif',
       description: 'Channel Growth',
       phoneImage: '/assets/phone.gif',
       phoneImageAlt: 'phone image',
+      smarterWayReview: '/assets/smarter-way-review.png',
+      smarterWayReviewText: '“We gained over 5,000 new YouTube subscribers in our first month, and it completely transformed our channel’s momentum. Every new video started reaching a real audience.”',
+      reviewRating:'4.8/5',
+      reviewsCount:'25,123 reviews',
       features: [
         'Strategic personalized YouTube™ channel promotion',
         'Respect platform compliance guidelines',
@@ -58,12 +67,12 @@ const theme = {
         { name: 'Bill', time: '2m ago' },
         { name: 'Andrew', time: '3m ago' }
       ],
-      video: 'https://www.youtube.com/embed/2t2ANJv5NuY?autoplay=1&rel=0&modestbranding=1',
+      video: 'https://www.youtube.com/watch?v=h_yQswsXwhY',
       checkout: {
         summaryTitle: 'Premium YouTube™ Channel Growth Package',
         summaryText: 'Get professional YouTube™ channel promotion that delivers real, engaged subscribers who care about your content.'
       },
-      videoThumbnail: 'https://img.youtube.com/vi/2t2ANJv5NuY/maxresdefault.jpg',
+      videoThumbnail: 'https://i.ytimg.com/vi/h_yQswsXwhY/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLCiuHZSty4JrTNrxjUOgoUVRPWSVg',
       whyGrowing: {
         challenges: [
           `The algorithm usually favors big creators, leaving many high-quality youtube channels underexposed`,
@@ -150,9 +159,25 @@ const theme = {
           }
         ]
       },
+      beforeAfter: [
+        {
+          before: { title: 'Creator Result 1', image: '/tubemagnet/before-after-one.png' },
+          after: { title: 'Creator Result 2', image: '/tubemagnet/before-after-two.png' }
+        },
+        {
+          before: { title: 'Creator Result 3', image: '/tubemagnet/before-after-three.png' },
+          after: { title: 'Creator Result 4', image: '/tubemagnet/before-after-four.png' }
+        },
+        {
+          before: { title: 'Creator Result 5', image: '/tubemagnet/before-after-five.png' },
+          after: { title: 'Creator Result 6', image: '/tubemagnet/before-after-six.png' }
+        },
+      ],
       simpleSteps: {
         description: 'YouTube™ Channel Visability',
         image: '/assets/img-two.png',
+        video: '/assets/simple-steps-video.mp4',
+        videoPosition: 'object-[20%_50%]',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target viewer demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for YouTube™.',
         secondStep: '2. Create a Compelling Video',
@@ -275,13 +300,25 @@ const theme = {
       },
       whatHappens: {
         benefits: [
-          "Better engagement with people who actually care about your content",
-          "Stronger positioning for future brand deals, sponsorships, and partnerships",
-          "Increased authority and presence within your niche or industry",
-          "Expanded opportunities to promote your products or services"
+          {
+            title: 'Monetization opportunities',
+            text: 'Brand deals, sponsorships, and partnership offers with $5K-$50K earning potential'
+          },
+          {
+            title: 'Direct income growth',
+            text: 'Increased views translate directly to higher YouTube ad revenue and better monetization rates'
+          },
+          {
+            title: 'Financial freedom',
+            text: 'Quit your day job and go all-in on doing what you love - creating YouTube videos.'
+          },
+          {
+            title: 'Authority status',
+            text: 'Become the recognized expert in your niche that people like, trust, and follow'
+          }
         ],
-        cloloredText: 'Every Day',
-        title: 'More Eyeballs On Your YouTube Videos',
+        cloloredText: 'Grow Your Channel',
+        title: 'What Happens When You',
         type: 'Channel'
       },
       transparentPrice: {

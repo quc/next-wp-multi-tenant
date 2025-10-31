@@ -7,6 +7,7 @@ import TrustedBySection from "./TrustedBySection";
 import ChannelMarketing from "./ChannelMarketing";
 import WhyGrowing from "./WhyGrowing";
 import Feedbacks from "./Feedbacks";
+import BeforeAfter from "./BeforeAfter";
 import SimpleSteps from "./SimpleSteps";
 import EveryDay from "./EveryDay";
 import PromotionToolkit from "./PromotionToolkit";
@@ -17,8 +18,10 @@ import SmarterWay from "./SmarterWay";
 import ContactUs from "./ContactUs";
 import ImageWithPhone from "./ImageWithPhone";
 import PricingSection from "./PricingSection";
+import StarIcon from "./StarIcon";
 import { Ubuntu } from 'next/font/google';
 import { resolveTheme, ThemeKey } from '@/themes';
+import CheckMark from '@/icons/check-mark.svg';
 
 interface LandingPageProps {
   theme: ThemeKey;
@@ -100,36 +103,62 @@ export default function LandingPage({ theme }: LandingPageProps) {
       {/* Main Content */}
       <div className=" py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Left Content */}
+          
           <div className="space-y-8">
-            {/* Headline */}
+
+            {/* Rating Block */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => {
+                  if (star <= 4) {
+                    return <StarIcon key={star} filled={true} />;
+                  } else {
+                    return (
+                      <div key={star} className="relative inline-block">
+                        <StarIcon filled={false} />
+                        <div className="absolute top-0 left-0 overflow-hidden" style={{ width: '80%' }}>
+                          <StarIcon filled={true} />
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+              <span className="text-lg font-bold sans-serif-text primary-textcolor">
+                {brand.reviewRating}
+              </span>
+              <span className="text-sm sans-serif-text" style={{ color: 'var(--color-text-secondary)' }}>
+                ({brand.reviewsCount})
+              </span>
+            </div>
+
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight serif-headline primary-textcolor">
-                Finally... A Smarter Way to Increase Your{" "}
-                <span className="solid-gradient-text serif-headline">{brand.platform} {brand.description}</span>
+                Use Our Influencer Army To
+                <span className="solid-gradient-text serif-headline">Gain Thousands</span>
+                {" "}of {brand.platformName} {brand.platformTarget}{" "}
+                <span className="solid-gradient-text serif-headline">Every Month</span>
               </h1>
               
               <p className="text-lg leading-relaxed sans-serif-text" style={{ color: 'var(--color-text-secondary)' }}>
-                Done-for-you marketing support to get your account in front of new audiences without the hassle.
+                {brand.platformDescription}
               </p>
             </div>
 
-            {/* Features List */}
+
             <div className="space-y-4">
-              {/* @ts-ignore */}
+
               {brand.features.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-3">
-                  <div className="w-6 h-6 gradient-bg rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
+                  <CheckMark 
+                    className={'w-5 h-5 checkmark-icon checkmark-secondary'}
+                  />
                   <span className="sans-serif-text" style={{ color: 'var(--color-text-primary)' }}>{feature}</span>
                 </div>
               ))}
             </div>
 
-            {/* CTA Button */}
+
             <div className="pt-4">
               <Link
                 href="/checkout"
@@ -140,13 +169,15 @@ export default function LandingPage({ theme }: LandingPageProps) {
             </div>
           </div>
 
-          {/* Right Visual */}
+
           <div className="relative h-full">
             <ImageWithPhone
                 image={brand.image}
                 phonePosition="landing-page"
                 phoneImage={brand.phoneImage}
                 phoneImageAlt={brand.phoneImageAlt}
+                smarterWayReview={brand.smarterWayReview}
+                smarterWayReviewText={brand.smarterWayReviewText}
             />
           </div>
         </div>
@@ -166,6 +197,9 @@ export default function LandingPage({ theme }: LandingPageProps) {
 
       {/* Feedbacks Section */}
       <Feedbacks brand={brand} />
+
+      {/* Before/After Section */}
+      <BeforeAfter brand={brand} />
 
       {/* New Audience Section */}
       <EveryDay brand={brand} />
