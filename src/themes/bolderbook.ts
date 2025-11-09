@@ -180,6 +180,8 @@ const theme ={
         image: '/assets/img-two.png',
         video: '/assets/simple-steps-video.mp4',
         videoPosition: 'object-[50%_50%]',
+        phoneScreen: '/assets/PhoneScreen.gif',
+        phoneMockup: '/assets/PhoneMockup.png',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target audience demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for Facebook™.',
         secondStep: '2. Share Your Content Pillars',
@@ -190,6 +192,7 @@ const theme ={
       pricing: {
         title: 'Growth Package',
         subtitle: 'Choose the perfect plan for your Facebook page growth needs',
+        bgVideo: '/assets/PricingBackground_low.mp4',
         packages: [
           {
             name: 'BolderBook Lite',

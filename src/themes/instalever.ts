@@ -179,6 +179,8 @@ const theme = {
         image: '/assets/img-two.png',
         video: '/assets/simple-steps-video.mp4',
         videoPosition: 'object-[80%_50%]',
+        phoneScreen: '/assets/PhoneScreen.gif',
+        phoneMockup: '/assets/PhoneMockup.png',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target viewer demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for Instagram™.',
         secondStep: '2. Create a Compelling Video',
@@ -189,6 +191,7 @@ const theme = {
       pricing: {
         title: 'Growth Package',
         subtitle: 'Choose the perfect plan for your Instagram account growth needs',
+        bgVideo: '/assets/PricingBackground_low.mp4',
         packages: [
           {
             name: 'Instalever Lite',

@@ -18,9 +18,10 @@ interface SmarterWayProps {
 export default function SmarterWay({ brand }: SmarterWayProps) {
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 pb-44">
+    <section className="pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-40 gap-0 min-h-[600px] max-h-[1000px] relative mx-4 lg:mx-0 rounded-2xl secondary-bg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-40 gap-0 min-h-[600px]  relative mx-4 lg:mx-0 rounded-2xl">
+          <div className="absolute w-full h-full min-h-[600px] max-h-[1000px] mx-4 lg:mx-0 rounded-2xl secondary-bg"></div>
           {/* Single Green Background Block */}
           <div 
             className="absolute inset-0 rounded-2xl secondary-bg max-h-[1000px]"
@@ -75,7 +76,7 @@ export default function SmarterWay({ brand }: SmarterWayProps) {
           </div>
 
           {/* Right Section - Image */}
-          <div className="lg:order-none z-10 max-w-[500px] rounded-2xl">
+          <div className="min-w-fit w-fullrounded-2xl">
               <ImageWithPhone 
                 image={brand.image}
                 phonePosition="smarter-way"

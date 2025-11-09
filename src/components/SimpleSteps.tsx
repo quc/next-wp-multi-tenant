@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Audience from '@/icons/audience.svg';
 import Device from '@/icons/device.svg';
 import SeoReport from '@/icons/seo-report.svg';
+import SimpleStepsPhone from './SimpleStepsPhone';
 
 interface SimpleStepsProps {
   brand: {
@@ -14,6 +15,8 @@ interface SimpleStepsProps {
       image: string;
       video?: string;
       videoPosition?: string;
+      phoneScreen?: string;
+      phoneMockup?: string;
       firstStep: string;
       firstStepDescription: string;
       secondStep: string;
@@ -62,12 +65,31 @@ export default function SimpleSteps({ brand }: SimpleStepsProps) {
           {/* Left Column - Main Image */}
           <div className="order-1 h-full min-h-[400px]">
             <div className="relative h-full">
-              {/* Placeholder for the main image - you can replace this with the actual image */}
               <div 
                 className="w-full h-full rounded-lg relative overflow-hidden"
               >
                 <div className="absolute inset-0 flex items-center justify-center">
-                    {brand.simpleSteps.video ? <video src={brand.simpleSteps.video} className={`w-full h-full object-cover ${brand.simpleSteps.videoPosition || ''}`} autoPlay loop muted playsInline /> : <img src={brand.simpleSteps.image} alt="simple steps" className={`w-full h-full object-cover`} />}
+                  {brand.simpleSteps.phoneScreen && brand.simpleSteps.phoneMockup ? (
+                    <SimpleStepsPhone 
+                      phoneScreen={brand.simpleSteps.phoneScreen}
+                      phoneMockup={brand.simpleSteps.phoneMockup}
+                    />
+                  ) : brand.simpleSteps.video ? (
+                    <video 
+                      src={brand.simpleSteps.video} 
+                      className={`w-full h-full object-cover ${brand.simpleSteps.videoPosition || ''}`} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                    />
+                  ) : (
+                    <img 
+                      src={brand.simpleSteps.image} 
+                      alt="simple steps" 
+                      className={`w-full h-full object-cover`} 
+                    />
+                  )}
                 </div>
               </div>
             </div>

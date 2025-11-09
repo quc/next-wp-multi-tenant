@@ -6,7 +6,7 @@ interface StarIconProps {
 export default function StarIcon({ filled, className = '' }: StarIconProps) {
   return (
     <svg 
-      className={`w-5 h-5 ${filled ? 'color-secondary-font' : 'text-gray-300'} ${className}`}
+      className={` ${filled ? 'color-secondary-font' : 'text-gray-300'} ${className}`}
       fill="currentColor" 
       viewBox="0 0 20 20"
     >

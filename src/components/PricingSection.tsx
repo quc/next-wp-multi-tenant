@@ -11,6 +11,7 @@ interface PricingSectionProps {
     pricing: {
       title: string;
       subtitle: string;
+      bgVideo: string;
       packages: Array<{
         name: string;
         price: string;
@@ -28,8 +29,24 @@ interface PricingSectionProps {
 
 export default function PricingSection({ brand }: PricingSectionProps) {
   return (
-    <section  id="pricing" className="py-16">
-      <div className="max-w-7xl mx-auto">
+    <section id="pricing" className="py-16 relative">
+      {/* Video Background */}
+      {brand.pricing.bgVideo && (
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover "
+          >
+            <source src={brand.pricing.bgVideo} type="video/mp4" />
+          </video>
+        </div>
+      )}
+      
+      {/* Content */}
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold serif-headline primary-textcolor mb-4">
@@ -54,7 +71,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
               {/* Most Popular Badge */}
               {pkg.isPopular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-white text-gray-800 px-4 py-2 rounded-xl text-sm font-bold sans-serif-text border-2 border-[var(--secondary-color)]">
+                  <div className="secondary-bg text-white px-4 py-2 rounded-xl text-sm font-bold sans-serif-text uppercase">
                     MOST POPULAR
                   </div>
                 </div>
@@ -102,7 +119,7 @@ export default function PricingSection({ brand }: PricingSectionProps) {
                     }`}>
                       {feature.highlight ? (
                         <>
-                          <strong>{feature.highlight}</strong> {feature.text.replace(feature.highlight, '')}
+                          <strong className={pkg.isPopular ? 'text-white' : 'color-secondary-font'}>{feature.highlight}</strong> {feature.text}
                         </>
                       ) : (
                         feature.text

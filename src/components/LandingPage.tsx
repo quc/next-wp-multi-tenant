@@ -95,7 +95,7 @@ export default function LandingPage({ theme }: LandingPageProps) {
   // };
 
   return (
-    <div className={`${ubuntu.variable} min-h-screen`} style={{ backgroundColor: 'var(--color-background)', ...cssVars }}>
+    <div className={`${ubuntu.variable} min-h-screen overflow-x-hidden`} style={{ backgroundColor: 'var(--color-background)', ...cssVars }}>
       
       <Header brand={brand} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

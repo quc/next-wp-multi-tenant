@@ -178,6 +178,8 @@ const theme = {
         image: '/assets/img-two.png',
         video: '/assets/simple-steps-video.mp4',
         videoPosition: 'object-[20%_50%]',
+        phoneScreen: '/assets/PhoneScreen.gif',
+        phoneMockup: '/assets/PhoneMockup.png',
         firstStep: '1. Define Your Target Demographics',
         firstStepDescription: 'Share details about your target viewer demographics. Our marketing team researches audience segments in your content category and develops external marketing strategies for YouTube™.',
         secondStep: '2. Create a Compelling Video',
@@ -188,49 +190,50 @@ const theme = {
       pricing: {
         title: 'Growth Package',
         subtitle: 'Choose the perfect plan for your YouTube channel growth needs',
+        bgVideo: '/assets/PricingBackground_low.mp4',
         packages: [
           {
             name: 'TubeMagnet Lite',
             price: '$69',
-            description: 'Hands-off channel promotion to get more views, engagement and subscribers. For personal accounts looking for fast organic growth.',
+            description: 'For personal accounts looking for fast organic growth.',
             features: [
-              { text: 'promoting your channel', highlight: '50 Influencers' },
-              { text: 'Fast growth' },
-              { text: 'Dedicated account manager' },
-              { text: 'Pure organic setup' },
-              { text: 'No hassle' },
-              { text: '100% data protection' }
+              { text: 'Influencers promoting your channel', highlight: '20' },
+              { text: '30-day money back guarantee' },
+              { text: 'Daily subscriber surge' },
+              { text: 'Precision niche matching' },
+              { text: 'Personal growth strategist' },
+              { text: 'Zero setup required' }
             ]
           },
           {
             name: 'TubeMagnet Standard',
             price: '$99',
-            description: 'Hands-off channel promotion to get more views, engagement and subscribers. For upcoming influencers and businesses looking for significantly faster growth.',
+            description: 'For upcoming influencers and businesses looking for significantly faster growth.',
             features: [
-              { text: 'promoting your channel', highlight: '100 Influencers' },
-              { text: 'Fast growth' },
-              { text: 'Dedicated account manager' },
-              { text: 'Pure organic setup' },
-              { text: 'No hassle' },
-              { text: '100% data protection' }
+              { text: 'Influencers promoting your channel', highlight: '50' },
+              { text: '30-day money back guarantee' },
+              { text: 'Daily subscriber surge' },
+              { text: 'Precision niche matching' },
+              { text: 'Personal growth strategist' },
+              { text: 'Zero setup required' }
             ],
             isPopular: true
           },
           {
             name: 'TubeMagnet Premium',
-            price: '$199',
-            description: 'Hands-off channel promotion to get more views, engagement and subscribers. Exponential organic growth that easily outpaces your competition.',
+            price: '$250',
+            description: 'Fastest growth on the market. Like steroids for YouTube channels.',
             features: [
-              { text: 'promoting your channel', highlight: '200 Influencers' },
-              { text: 'Fast growth' },
-              { text: 'Dedicated account manager' },
-              { text: 'Pure organic setup' },
-              { text: 'No hassle' },
-              { text: '100% data protection' }
+              { text: 'Influencers promoting your channel', highlight: '150' },
+              { text: '30-day money back guarantee' },
+              { text: 'Daily subscriber surge' },
+              { text: 'Precision niche matching' },
+              { text: 'Personal growth strategist' },
+              { text: 'Zero setup required' }
             ]
           }
         ],
-        disclaimer: 'Cancel Anytime. Try our professional service risk-free. If you\'re not completely satisfied with our service quality, cancel within 3 days with zero charge. No complicated cancellation process - one simple step and you\'re done.'
+        disclaimer: 'Cancel Anytime. Try out professional service risk-free. If you\'re not completely satisfied with our service quality, cancel anytime with zero charge.'
       },
       everyDay: {
         description: 'More Eyeballs On Your YouTube Videos',

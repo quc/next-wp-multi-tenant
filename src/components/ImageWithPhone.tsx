@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import MobilePhone from './MobilePhone';
+import StarIcon from './StarIcon';
 
 interface ImageWithPhoneProps {
   image: string;
@@ -25,48 +26,75 @@ export default function ImageWithPhone(brand: ImageWithPhoneProps) {
   const getPhonePositionClasses = () => {
     switch (phonePosition) {
       case 'smarter-way':
-        return 'mt-[20%] lg:mt-auto right-[45%] lg:right-[25%] top-[10%] lg:min-w-[232px] lg:h-[437px] min-w-[155px] h-[288px]';
+        return 'lg:mt-[50%] lg:ml-[50%] mt-[20%] ml-[55%] max-w-[132px] max-h-[245px] lg:max-w-[232px] lg:max-h-[437px]';
       case 'landing-page':
       default:
-        return 'mt-[50%] lg:mt-auto mr-auto lg:min-w-[232px] lg:h-[437px] min-w-[155px] h-[288px]';
+        return 'min-w-[132px] min-h-[245px] max-w-[200px] max-h-[369px] lg:w-[200px] lg:h-[369px]';
     }
   };
 
   const getImageClasses = () => {
     switch (phonePosition) {
       case 'smarter-way':
-        return 'lg:w-[662px] lg:h-[456px] w-[389px] h-[268px] flex items-center justify-center scale-[0.7]';
-      case 'landing-page':
-        return 'lg:w-[680px] lg:h-[468px] flex items-center justify-center';
+        return 'scale-105';
       default:
-        return '';
+        return 'scale-125';
+    }
+  };
+
+  const getSecondClasses = () => {
+    switch (phonePosition) {
+      case 'smarter-way':
+        return 'relative flex w-[120%]';
+      default:
+        return 'relative flex w-full gap-2 justify-center lg:items-center items-end lg:mt-[40%] mt-[33%]';
     }
   };
 
 
   return (
-    <div className={`relative w-full h-[457px] lg:h-full flex items-center ${className}`}>
-      <div className="overflow-hidden z-10 h-full lg:h-[110%] min-w-full">
-        <div className={`h-full relative ${getImageClasses()}`}>
-          <img src={image} alt={imageAlt} className="w-full h-full object-cover scale-[0.7] rounded-[2.5rem]" />
+    <div className={`relative flex flex-col lg:flex-row items-center ${className}`}>
+      <div className="z-10 w-full flex flex-col">
+        <div className={`lg:w-[538px] lg:h-[328px] h-[241px] flex items-center justify-center absolute`}>
+          <img src={image} alt={imageAlt} className={`${getImageClasses()}`} />
         </div>
-        {smarterWayReview && smarterWayReviewText&& (
-          <div className="review-container">
-            <div className="review flex flex-col w-[68%] gap-y-4">
-              <p>{smarterWayReviewText}</p>
-              <div className="review-image flex gap-x-8 items-center">
-                <div className="h-[4px] w-[80px] rounded-full gradient-bg">
+        <div className={`${getSecondClasses()}`}>
+          
+            {smarterWayReview && smarterWayReviewText && (
+              <div className=" lg:max-h-[200px] max-w-[65%] max-h-[146px] flex flex-col lg:gap-4 gap-2">
+                <p className="lg:text-sm text-[10px] leading-relaxed primary-textcolor sans-serif-text ">
+                  {smarterWayReviewText}
+                </p>
+                <div className="flex items-center lg:gap-4 gap-2">
+                  <div className="h-[1px] lg:w-[80px] w-[53px] secondary-bg"></div>
+                  <div className="flex items-center lg:gap-3 gap-1">
+                    <img 
+                      src={smarterWayReview} 
+                      alt="Reviewer profile" 
+                      className="lg:w-10 lg:h-10 w-6 h-6 rounded-full object-cover" 
+                    />
+                    <div className="flex flex-col lg:gap-1 gap-0.5">
+                      <span className="lg:text-sm text-xs font-medium primary-textcolor sans-serif-text">
+                        Jason L.
+                      </span>
+                      <div className="flex items-center lg:gap-1 gap-0.5">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <StarIcon key={star} filled={true} className="lg:w-3 lg:h-3 w-[8px] h-[8px]" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <img src={smarterWayReview} alt="Smarter Way Review" className="object-contain" />
               </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className={`relative ${getPhonePositionClasses()} z-20 hidden`}>
-        <img src={phoneImage || ''} alt={phoneImageAlt || ''} className="w-full h-full" />
-      </div>
+            )} 
+            {phoneImage && (
+              <div className={`ml-auto ${getPhonePositionClasses()}`}>
+                <img src={phoneImage} alt={phoneImageAlt || ''} className="w-full h-full" />
+              </div>
+            )}
+          
+        </div>
+      </div> 
     </div>
   );
 }

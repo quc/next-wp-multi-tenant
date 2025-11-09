@@ -189,4 +189,10 @@
     animation: marquee-left 30s linear infinite;
   }
 
+  .video-overlay {
+    background: var(--secondary-color);
+    mix-blend-mode: difference;
+    color: var(--secondary-color);
+  }
+
 }
