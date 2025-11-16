@@ -19,7 +19,11 @@ const nextConfig: NextConfig = {
 		return config;
 	},
 	async rewrites() {
-		const domains = ['tubemagnet', 'instalever', 'xgrowlab', 'streameredge', 'bolderbook', 'omgtok', 'earforge'];
+		const domains = [
+			'tubemagnet', 'instalever', 'xgrowlab', 'streameredge', 'bolderbook', 'omgtok', 'earforge',
+			// Old domains
+			'tubekarma', 'twenvy'
+		];
 		
 		const domainRewrites = domains.flatMap(domain => [
 			{
@@ -29,7 +33,7 @@ const nextConfig: NextConfig = {
 			},
 			{
 				source: '/assets/:path*',
-				has: [{ type: 'header', key: 'host', value: `^${domain}\\.com$` }],
+				has: [{ type: 'header', key: 'host', value: `^${domain}\\.co(m)?$` }],
 				destination: `/${domain}/:path*`,
 			},
 		]);

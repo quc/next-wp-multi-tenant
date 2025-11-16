@@ -47,6 +47,17 @@ module.exports = {
 			sourceUrl: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_EARFORGE,
 			hostUrl: process.env.NEXT_PUBLIC_HOST_URL_EARFORGE,
 		},
+		// Old domains
+		{
+			slug: 'tubekarma',
+			sourceUrl: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_TUBEKARMA,
+			hostUrl: process.env.NEXT_PUBLIC_HOST_URL_TUBEKARMA,
+		},
+		{
+			slug: 'twenvy',
+			sourceUrl: process.env.NEXT_PUBLIC_HEADLESS_WP_URL_TWENVY,
+			hostUrl: process.env.NEXT_PUBLIC_HOST_URL_TWENVY,
+		},
 	],
 	integrations: {
 		yoastSEO: {

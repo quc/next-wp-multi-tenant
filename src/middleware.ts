@@ -13,11 +13,11 @@ export const config = {
 		 * 6. /tubemagnet and /instalever static files
 		 * 7. /assets paths (handled by rewrite rules)
 		 */
-		'/((?!api|cache-healthcheck|_next|fonts[\\w-]+\\.\\w+|icons/.*|tubemagnet/.*|instalever/.*|xgrowlab/.*|streameredge/.*|bolderbook/.*|omgtok/.*|earforge/.*|assets/.*).*)',
+		'/((?!api|cache-healthcheck|_next|fonts[\\w-]+\\.\\w+|icons/.*|tubemagnet/.*|instalever/.*|xgrowlab/.*|streameredge/.*|bolderbook/.*|omgtok/.*|earforge/.*|tubekarma/.*|twenvy/.*|assets/.*).*)',
 	],
 };
 
-const validSites = ['tubemagnet', 'instalever', 'xgrowlab', 'streameredge', 'bolderbook', 'omgtok', 'earforge'];
+const validSites = ['tubemagnet', 'instalever', 'xgrowlab', 'streameredge', 'bolderbook', 'omgtok', 'earforge', 'tubekarma'];
 
 function extractSiteFromHostname(hostname: string): string | null {
 	try {

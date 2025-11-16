@@ -1,4 +1,5 @@
 import LandingPage from '@/components/LandingPage';
+import OldLandingPage from '@/components/OldLandingPage';
 import { resolveTheme } from '@/themes';
 import { HeadstartWPRoute } from '@headstartwp/next/app';
 import { Metadata } from 'next';
@@ -24,6 +25,13 @@ export async function generateMetadata({
 
 export default async function SitePage({ params }: HeadstartWPRoute) {
 	const resolvedParams = await params;
+
+	const oldDomains = ['tubekarma', 'twenvy'];
+
+	// @ts-ignore
+	if (oldDomains.includes(resolvedParams.site)) {
+		return <OldLandingPage theme={resolvedParams.site as 'tubekarma' | 'twenvy'} />;
+	}
 
 	return <LandingPage theme={resolvedParams.site as 'tubemagnet' | 'instalever'} />;
 }

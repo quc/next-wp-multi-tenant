@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 89 89" fill="none">
+    <style>
+        @keyframes BLINK {
+        0% {
+        opacity: 0;
+        }
+        33% {
+        opacity: 1;
+        }
+        66% {
+        opacity: 1;
+        }
+        100% {
+        opacity: 0;
+        }
+        }
+
+        .blink_1 {
+        animation: BLINK 2s infinite;
+        opacity: 0;
+        }
+
+        .blink_2 {
+        animation: BLINK 2s infinite .3s;
+        opacity: 0;
+        }
+
+        .blink_3 {
+        animation: BLINK 2s infinite .6s;
+        opacity: 0;
+        }
+    </style>
+    <g class="adjustable fg with-strokes">
+        <path class="add-fill" fill-rule="evenodd" clip-rule="evenodd" d="M46.2812 15.0491C46.2812 14.2852 45.8461 13.5881 45.1599 13.2525C44.4737 12.9169 43.6563 13.0014 43.0533 13.4704L21.7396 30.0477C21.3625 30.0825 21.0157 30.222 20.7286 30.4369H7.02165C5.81669 30.4369 4.68585 30.9385 3.8737 31.743C2.99551 32.5929 2.53767 33.7518 2.53767 34.9209V54.7926C2.53767 55.955 2.99024 57.1072 3.85854 57.9557C4.70709 58.8241 5.85928 59.2766 7.02165 59.2766H21.2393L43.0533 76.2431C43.6563 76.7121 44.4737 76.7967 45.1599 76.4611C45.8461 76.1255 46.2812 75.4283 46.2812 74.6644V15.0491ZM19.9257 34.4369H7.02165C6.92249 34.4369 6.78805 34.4855 6.68714 34.5864C6.67711 34.5964 6.66698 34.6063 6.65674 34.6161C6.59115 34.679 6.53767 34.7853 6.53767 34.9209V54.7926C6.53767 54.9282 6.59115 55.0345 6.65674 55.0974C6.67722 55.117 6.69728 55.1371 6.71691 55.1576C6.77976 55.2231 6.88604 55.2766 7.02165 55.2766H19.9257V34.4369ZM23.9257 56.2986L42.2812 70.5751V19.1384L23.9257 33.4149V56.2986Z" style="fill: #ffffff"></path>
+        <path class="add-stroke blink_3" d="M71.2668 14.2542C90.4629 34.7618 89.0918 55.1503 71.6841 75.4394" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" style="stroke: #ffffff"></path>
+        <path class="add-stroke blink_2" d="M62.9211 24.051C76.573 39.6305 74.8243 53.2625 62.8615 65.6228" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" style="stroke: #ffffff"></path>
+        <path class="add-stroke blink_1" d="M53.6805 33.7485C61.0529 40.5049 61.7484 47.8376 53.6805 55.9453" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" style="stroke: #ffffff"></path>
+        <path class="add-stroke" d="M81.1693 8.54834L8.57302 81.1446" stroke-width="4" stroke-linecap="round" style="stroke: #ffffff"></path>
+    </g>
+</svg>
